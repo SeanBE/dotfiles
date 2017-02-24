@@ -5,5 +5,6 @@ Inspired by [this Hacker News thread] (https://news.ycombinator.com/item?id=1107
 ## Install
 
 ```sh
-git clone https://github.com/SeanBE/dotfiles ~/.dotfiles
+git clone --bare https://github.com/SeanBE/dotfiles.git $HOME/.dotfiles
+ln -s $HOME/.vim/autoload/vim-plug/plug.vim $HOME/.vim/autoload/plug.vim
 ```
