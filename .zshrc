@@ -31,6 +31,7 @@ export PATH=${PATH}:${TEXLIVE_HOME}
 
 ZSH_THEME="Soliah"
 export ZSH=$HOME/.oh-my-zsh
+export ZSH_CUSTOM=$HOME/.zsh_custom
 plugins=(git pip python docker-compose zsh-syntax-highlighting z)
 source $ZSH/oh-my-zsh.sh
 
