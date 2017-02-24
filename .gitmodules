@@ -1,9 +1,6 @@
 [submodule ".vim/autoload/vim-plug"]
 	path = .vim/autoload/vim-plug
 	url = https://github.com/junegunn/vim-plug
-[submodule ".vim/solarized"]
-	path = .vim/solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
