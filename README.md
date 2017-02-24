@@ -1,6 +1,8 @@
 # My ~/.dotfiles
 
-Inspired by [this Hacker News thread] (https://news.ycombinator.com/item?id=11071754).
+.Dotfile configuration inspired by [this Hacker News thread] (https://news.ycombinator.com/item?id=11071754).
+
+Previously used [@holman](https://github.com/holman/) topical structure ([holman's dotfiles](http://github.com/holman/dotfiles)).
 
 ## Install
 
