@@ -1,0 +1,22 @@
+"*":
+  "atom-beautify":
+    general:
+      _analyticsUserId: "ece38fee-14a8-4840-b128-d5ca9382364e"
+    java:
+      configPath: "~/.config/uncrustify.cfg"
+  core:
+    autoHideMenuBar: true
+    telemetryConsent: "no"
+    themes: [
+      "base-16-ocean-dark-ui-theme"
+      "base16-ocean-dark-syntax-theme"
+    ]
+  editor:
+    fontSize: 12
+  "exception-reporting":
+    userId: "ec0b5327-d9c4-84df-67a1-1e4f3ef7b77e"
+  "tree-view":
+    hideVcsIgnoredFiles: true
+    squashDirectoryNames: true
+  welcome:
+    showOnStartup: false
