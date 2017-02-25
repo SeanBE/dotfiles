@@ -6,6 +6,7 @@ Previously used [@holman](https://github.com/holman/) topical structure ([holman
 
 ## Install
 
+Instructions not complete. 
 ```sh
 git clone --bare https://github.com/SeanBE/dotfiles.git $HOME/.dotfiles
 ln -s $HOME/.vim/autoload/vim-plug/plug.vim $HOME/.vim/autoload/plug.vim
