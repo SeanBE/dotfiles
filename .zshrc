@@ -1,4 +1,5 @@
 source $HOME/.exports
+source $HOME/.functions
 
 eval $(dircolors | sed 's/ow=\([0-9]*\);[0-9]*/ow=\1;40/')
 
