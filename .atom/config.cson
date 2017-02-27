@@ -8,7 +8,7 @@
     autoHideMenuBar: true
     telemetryConsent: "no"
     themes: [
-      "base-16-ocean-dark-ui-theme"
+      "one-dark-ui"
       "base16-ocean-dark-syntax-theme"
     ]
   editor:
