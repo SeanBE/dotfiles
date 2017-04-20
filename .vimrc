@@ -20,6 +20,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'daviesjamie/vim-base16-lightline'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'airblade/vim-gitgutter'
+"Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 let g:ctrlp_open_new_file = 'r'
