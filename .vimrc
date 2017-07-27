@@ -1,11 +1,19 @@
 set nocompatible              
 filetype off                  
+filetype plugin on
+syntax on
 
 set hidden
 set confirm
 set history=100
 set laststatus=2
 set encoding=utf-8 
+
+filetype plugin indent on
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set splitright
 
 map <F2> :NERDTreeToggle<CR>
 
@@ -20,8 +28,11 @@ Plug 'itchyny/lightline.vim'
 Plug 'daviesjamie/vim-base16-lightline'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'airblade/vim-gitgutter'
-"Plug 'davidhalter/jedi-vim'
+Plug 'vimwiki/vimwiki'
+Plug 'ekalinin/Dockerfile.vim'
 call plug#end()
+
+let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 
 let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
