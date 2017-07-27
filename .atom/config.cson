@@ -4,15 +4,17 @@
       _analyticsUserId: "ece38fee-14a8-4840-b128-d5ca9382364e"
     java:
       configPath: "~/.config/uncrustify.cfg"
+  "base16-syntax":
+    scheme: "Ocean"
   core:
     autoHideMenuBar: true
     telemetryConsent: "no"
     themes: [
-      "one-dark-ui"
-      "base16-ocean-dark-syntax-theme"
+      "base-16-ocean-dark-ui-theme"
+      "base16-syntax"
     ]
   editor:
-    fontSize: 12
+    fontSize: 9
   "exception-reporting":
     userId: "ec0b5327-d9c4-84df-67a1-1e4f3ef7b77e"
   "tree-view":
