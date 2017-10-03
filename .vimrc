@@ -17,8 +17,6 @@ set splitright
 
 map <F2> :NERDTreeToggle<CR>
 
-au BufRead,BufNewFile *.md setlocal textwidth=80|setlocal colorcolumn=+1
-
 call plug#begin('~/.vim/plugged') "syntax enabled + filetype plugin indent on
 Plug 'tpope/vim-fugitive'
 Plug 'L9'
@@ -40,6 +38,8 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 let g:lightline = {
      \ 'colorscheme': 'base16',
      \ }
+
+nmap <Leader>b :CtrlPBuffer<CR>
 
 " http://johnmorales.com/blog/2015/01/09/base16-shell-tmux-vim-color-switching-dead-simple
 if filereadable(expand("~/.vimrc_background"))
