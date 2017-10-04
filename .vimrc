@@ -28,9 +28,14 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'airblade/vim-gitgutter'
 Plug 'vimwiki/vimwiki'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'w0rp/ale'
+"Plug 'https://github.com/python-mode/python-mode'
 call plug#end()
 
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
+
+let g:ale_sign_error = 'E'
+let g:ale_sign_warning = 'W'
 
 let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
