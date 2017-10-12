@@ -1,23 +1,20 @@
 set nocompatible              
 filetype off                  
-filetype plugin on
+
 syntax on
+filetype plugin on
+filetype plugin indent on
 
 set hidden
 set confirm
+set modeline
+set expandtab
+set splitright
 set history=100
 set laststatus=2
 set encoding=utf-8 
 
-filetype plugin indent on
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set splitright
-
-map <F2> :NERDTreeToggle<CR>
-
-call plug#begin('~/.vim/plugged') "syntax enabled + filetype plugin indent on
+call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'L9'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -32,10 +29,12 @@ Plug 'w0rp/ale'
 "Plug 'https://github.com/python-mode/python-mode'
 call plug#end()
 
+map <F2> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 
 let g:ale_sign_error = 'E'
 let g:ale_sign_warning = 'W'
+highlight! def link ALEErrorSign DiffDelete
 
 let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
