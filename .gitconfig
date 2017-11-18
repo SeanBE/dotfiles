@@ -1,85 +1,86 @@
 [core]
-	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	pager = "less -F -X"
-	excludesfile = ~/.gitignore.global
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    pager = "less -F -X"
+    xcludesfile = ~/.gitignore.global
 [include]
-	path = ~/.gitconfig.local # includes user section (name, email..)  
+    path = ~/.gitconfig.local # includes user section (name, email..)
 [push]
-	default = simple
+    default = simple
 [branch]
-	autosetupmerge = true
+    autosetupmerge = true
 [mergetool]
-  	keepBackup = false
+    keepBackup = false
 [difftool]
-  	prompt = false
+    prompt = false
 [color]
-	diff = auto
-	status = auto
-	branch = auto
-	interactive = auto
-	ui = auto
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+    ui = auto
 [color "branch"]
-	current = yellow bold
-	local = green bold
-	remote = cyan bold
+    current = yellow bold
+    local = green bold
+    remote = cyan bold
 [color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
 [color "status"]
-	added = green bold
-	changed = yellow bold
-	deleted = red bold
-	untracked = black bold
+    added = green bold
+    changed = yellow bold
+    deleted = red bold
+    untracked = black bold
 [log]
-  	decorate = true
-  	abbrevCommit = true
+    decorate = true
+    abbrevCommit = true
 [alias]
-	amend = commit --amend
-	ammend = amend
+    amend = commit --amend
+    ammend = amend
+    amen = commit --amend --no-edit
 
-	cfg = config --global -l
-	co = checkout
-	cob = checkout -b
+    cfg = config --global -l
+    co = checkout
+    cob = checkout -b
 
-	s = status -sb
-	b = branch -avv
-	f = fetch
-	d = diff
-	l = log --oneline
-	lg = log --oneline --graph --decorate
+    s = status -sb
+    b = branch -avv
+    f = fetch
+    d = diff
+    l = log --oneline
+    lg = log --oneline --graph --decorate
 
-	# rm - untrack git tracked file. Specify file path after command
-	untrack = rm -r --cached
+    # rm - untrack git tracked file. Specify file path after command
+    untrack = rm -r --cached
 
-	# Save work in progress. Only modified tracked files...
-	save = "!git add -u; git commit -m \"Saving Work in Progress\""
+    # Save work in progress. Only modified tracked files...
+    save = "!git add -u; git commit -m \"Saving Work in Progress\""
 
-	# Prune stale remote links to origin
-	prune-origin = git remote prune origin
+    # Prune stale remote links to origin
+    prune-origin = git remote prune origin
 
-	# Undo previous commit and leave commit files in working tree
-	undo = reset HEAD~ --mixed
+    # Undo previous commit and leave commit files in working tree
+    undo = reset HEAD~ --mixed
 
-	up = !git pull --rebase --prune $@
+    up = !git pull --rebase --prune $@
 
-	# Prune local branches where HEAD commit already merged to develop
-	prune-local = "!f() { git branch --merged master | grep -v 'master' | xargs -n 1 git branch -d; }; f"
+    # Prune local branches where HEAD commit already merged to develop
+    prune-local = "!f() { git branch --merged master | grep -v 'master' | xargs -n 1 git branch -d; }; f"
 
-	# log
-	l = log
-	lp = log -p
-	lg = log --graph
-	ls = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\"
-	lc = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an>%Creset' --abbrev-commit --date=relative
-	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    # log
+    l = log
+    lp = log -p
+    lg = log --graph
+    ls = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\"
+    lc = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an>%Creset' --abbrev-commit --date=relative
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
 
-	# rebase
-	rb = rebase
-	rc = rebase --continue
-	rs = rebase --skip
+    # rebase
+    rb = rebase
+    rc = rebase --continue
+    rs = rebase --skip
 
-	whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
-	whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short	
+    whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+    whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
