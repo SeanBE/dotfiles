@@ -23,5 +23,8 @@ ln -s $HOME/.vim/autoload/vim-plug/plug.vim $HOME/.vim/autoload/plug.vim
 source ~/.zshrc
 dot config --local status.showUntrackedFiles no
 
+# Update .gitconfig.local.example with your own user credentials (and remove
+.example extension).
+
 # Set up weechat with /scripts buffers.pl buffer_autoclose.py go.py iset.pl autojoin.py 
 ```
