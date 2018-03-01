@@ -4,6 +4,8 @@
     excludesfile = ~/.gitignore.global
 [include]
     path = ~/.gitconfig.local # includes user section (name, email..)
+[includeIf "gitdir:~/dev/work/"]
+    path = ~/.gitconfig.work
 [diff]
     tool = vimdiff
 [push]
