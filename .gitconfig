@@ -4,11 +4,17 @@
     excludesfile = ~/.gitignore.global
 [include]
     path = ~/.gitconfig.local # includes user section (name, email..)
+[diff]
+    tool = vimdiff
 [push]
     default = simple
 [branch]
     autosetupmerge = true
+[merge]
+    tool = vimdiff
+    conflictstyle = diff3
 [mergetool]
+    prompt = false
     keepBackup = false
 [difftool]
     prompt = false
