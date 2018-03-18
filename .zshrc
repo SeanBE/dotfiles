@@ -9,11 +9,12 @@ plugins=(git aws pip python docker docker-compose zsh-syntax-highlighting z json
 
 source $ZSH/oh-my-zsh.sh
 
+# TODO check this
+alias mount_usb="sudo mount /dev/sdb1 /mnt/usb"
+
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-# TODO all into search?
-#TODO find new home for this..
-# respect .gitiginore??
+# TODO respect .gitiginore??
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 alias ack=ag
@@ -29,10 +30,5 @@ export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 # preview not working
 export FZF_DEFAULT_OPTS="--height 40% --color=16"
 
-# The Silver Searcher is even faster than Ack.
-# https://github.com/ggreer/the_silver_searcher
-
-export NVM_DIR="/home/sean/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
+# TODO export TODO file here.
 echo "TODO add disk usage here."
