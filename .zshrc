@@ -11,3 +11,28 @@ source $ZSH/oh-my-zsh.sh
 
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+# TODO all into search?
+#TODO find new home for this..
+# respect .gitiginore??
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+alias ack=ag
+alias ag='ag --color-path 1\;31 --color-match 1\;32 --color'
+
+
+# figure out auto way to bring in these https://github.com/nicodebo/base16-fzf/tree/master/bash
+#if _has fzf && _has ag; then
+export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# preview not working
+export FZF_DEFAULT_OPTS="--height 40% --color=16"
+
+# The Silver Searcher is even faster than Ack.
+# https://github.com/ggreer/the_silver_searcher
+
+export NVM_DIR="/home/sean/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+echo "TODO add disk usage here."
