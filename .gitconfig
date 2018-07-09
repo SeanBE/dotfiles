@@ -12,6 +12,8 @@
     tool = vimdiff
 [push]
     default = simple
+[rebase]
+    autosquash = true
 [branch]
     autosetupmerge = true
 [merge]
@@ -62,6 +64,7 @@
     l = log --oneline
     lg = log --oneline --graph --decorate
 
+    rdiff = diff @{upstream}
     # rm - untrack git tracked file. Specify file path after command
     untrack = rm -r --cached
 
