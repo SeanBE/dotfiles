@@ -41,8 +41,7 @@
 \pset border 2
 \set VERBOSITY verbose
 
+\ir .psqlrc-:HOST-:DBNAME
+
 -- Set noisyness back to normal
 \unset QUIET
-
--- \set some_alias `cat ~/.psqlrc-aliases/some_client/some_alias.sql`
-\ir .psqlrc-alias
