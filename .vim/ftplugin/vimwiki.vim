@@ -1,5 +1,5 @@
 " Markdown specific settings.
-setlocal textwidth=80
+setlocal textwidth=120
 setlocal colorcolumn=+1
 
 " add all in directory. gitignore only accepts itself + .md
