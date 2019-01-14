@@ -1,0 +1,15 @@
+--exclude=log
+--exclude=tmp
+--exclude=deps
+--exclude=.git
+--exclude=build
+--exclude=vendor
+--exclude=node_modules
+
+--recurse=yes
+--tag-relative=yes
+
+--langdef=wiki
+--langmap=wiki:.md
+--regex-wiki=/^(={1,6})[ \t]+(.+)[ \t]+\1$/\2/h,header/
+#--regex-wiki=/^=[ \t]+(.+)[ \t]+=$/\1/h,header/
