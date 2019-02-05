@@ -1,7 +1,7 @@
 " Markdown specific settings.
-setlocal textwidth=80
+setlocal textwidth=120
 setlocal autoindent
-setlocal colorcolumn=0
+setlocal colorcolumn=+1
 setlocal linebreak
 setlocal nonumber
 setlocal shiftwidth=4
