@@ -31,6 +31,7 @@ export ZSH_THEME="Soliah"
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM=$HOME/.zsh_custom
 
-# Serverless completions
-[[ -f /home/sean/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/sean/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-[[ -f /home/sean/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /home/sean/.npm-global/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+export NVM_DIR="/home/sean/.nvm";
+unset NPM_CONFIG_PREFIX;
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh";  # This loads nvm
+nvm use --no-use --silent v11.11.0
