@@ -20,6 +20,9 @@ alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias ack=ag
 alias ag='ag --color-path 1\;31 --color-match 1\;32 --color'
 
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^x^x' edit-command-line
 
 # figure out auto way to bring in these https://github.com/nicodebo/base16-fzf/tree/master/bash
 #if _has fzf && _has ag; then
