@@ -37,6 +37,8 @@ export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 
+export HIST_SAVE_NO_DUPS
+setopt HIST_IGNORE_SPACE
 # preview not working
 export FZF_DEFAULT_OPTS="--height 40% --color=16"
 
