@@ -5,7 +5,14 @@ eval $(dircolors | sed 's/ow=\([0-9]*\);[0-9]*/ow=\1;40/')
 
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
-plugins=(git aws pip python docker docker-compose zsh-syntax-highlighting z jsontools kubectl)
+plugins=(git aws pip python docker docker-compose z jsontools)
+
+function kubectl() {
+        if ! type __start_kubectl >/dev/null 2>&1; then
+                source <(command kubectl completion zsh)
+        fi
+        command kubectl "$@"
+}
 
 source $ZSH/oh-my-zsh.sh
 
