@@ -6,5 +6,13 @@
                 "Ctrl M"
             ],
             "selector": ".jp-Notebook.jp-mod-editMode"
-    }
+    },
+    {
+            "command": "documentsearch:start",
+            "keys": [
+                "Accel F"
+            ],
+            "selector": ".jp-mod-searchable",
+            "disabled": true
+    },
 ]}
