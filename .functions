@@ -20,3 +20,18 @@ fshow() {
                 {}
 FZF-EOF"
 }
+
+sqlformat() {
+        echo "\n" && python -c 'import sqlparse; print(sqlparse.format("""'$1'""", reindent=True, keyword_case="upper"))'
+}
+
+headphonesOn() {
+        if ! pactl list sinks short | grep bluez >/dev/null;
+        then
+                echo bluez sink not found
+        else
+                bt_sink_index=`pactl list sinks short | grep bluez_sink | cut -f1`
+                pacmd set-default-sink $bt_sink_index
+                echo using bleuz sink
+        fi
+}
