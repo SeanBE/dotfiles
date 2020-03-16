@@ -3,6 +3,10 @@ myIp() {
 	ifconfig wlp4s0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en0 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
 }
 
+isTmux() {
+	[ -n "$TMUX" ]
+}
+
 # Returns whether the given command is executable or aliased.
 _has() {
   return $( whence $1 >/dev/null )
