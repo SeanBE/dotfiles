@@ -7,10 +7,20 @@
 # message file.  If the hook fails with a non-zero status,
 # the commit is aborted.
 
-# Removes the "# Please enter the commit message..." help message.
+# From https://github.com/git/git/blob/master/templates/hooks--prepare-commit-msg.sample
 
 COMMIT_MSG_FILE=$1
 COMMIT_SOURCE=$2
 SHA1=$3
 
-@PERL_PATH@ -i.bak -ne 'print unless(m/^. Please enter the commit message/..m/^#$/)' "$COMMIT_MSG_FILE"
+# Removes the "# Please enter the commit message..." help message.
+/usr/bin/perl -i.bak -ne 'print unless(m/^. Please enter the commit message/..m/^#$/)' "$COMMIT_MSG_FILE"
+
+# Include output of git diff into message before git status output
+# case "$COMMIT_SOURCE,$SHA1" in
+#  ,|template,)
+#    @PERL_PATH@ -i.bak -pe '
+#       print "\n" . `git diff --cached --name-status -r`
+# 	 if /^#/ && $first++ == 0' "$COMMIT_MSG_FILE" ;;
+#  *) ;;
+# esac

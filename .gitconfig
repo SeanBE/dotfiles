@@ -81,6 +81,8 @@
 
     # Prune local branches where HEAD commit already merged to develop
     prune-local = "!f() { git branch --merged master | grep -v 'master' | xargs -n 1 git branch -d; }; f"
+    prune-tags = "fetch --prune origin +refs/tags/*:refs/tags/*"
+    reset-fetch = "!git config remote.origin.fetch \"+refs/heads/*:refs/remotes/origin/*\"; git fetch origin"
 
     # log
     l = log
