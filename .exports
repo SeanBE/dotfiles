@@ -1,5 +1,4 @@
 export EDITOR='vim'
-export TERM=tmux-256color
 export BASE16_SHELL=$HOME/.config/base16-shell/
 
 export WORKON_HOME=$HOME/.virtualenvs
