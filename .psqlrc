@@ -16,7 +16,7 @@
 -- Consider: http://petereisentraut.blogspot.com/2009/09/how-to-set-xterm-titles-in-psql.html
 
 --host/db specific history files
-\set HISTFILE ~/.psql_history- :HOST - :DBNAME
+\set HISTFILE ~/.psql_history/:HOST - :DBNAME
 
 -- Show timing info for queries
 \timing
@@ -41,7 +41,7 @@
 \pset border 2
 \set VERBOSITY verbose
 
-\ir .psqlrc-:HOST-:DBNAME
+\ir .psql/.psqlrc-:HOST-:DBNAME
 
 -- Set noisyness back to normal
 \unset QUIET
