@@ -15,16 +15,10 @@ git clone --bare https://github.com/SeanBE/dotfiles.git $HOME/.dotfiles
 # You might have existing files that conflict with my dotfiles.
 # The following will fail with conflicts if your existing files are not removed (Use force flag -f if simply do not care).
 git --work-tree=$HOME --git-dir=$HOME/.dotfiles checkout
-
 git --work-tree=$HOME --git-dir=$HOME/.dotfiles submodule update --init --recursive
 
 ln -s $HOME/.vim/autoload/vim-plug/plug.vim $HOME/.vim/autoload/plug.vim
-
 source ~/.zshrc
 dot config --local status.showUntrackedFiles no
-
-# Update .gitconfig.local.example with your own user credentials (and remove
-.example extension).
-
-# Set up weechat with /scripts buffers.pl buffer_autoclose.py go.py iset.pl autojoin.py 
+# Update .gitconfig.local.example with your own user credentials (and remove .example extension).
 ```

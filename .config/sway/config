@@ -16,8 +16,10 @@ set $lockman exec sh ~/.config/sway/scripts/lockman.sh
 bindsym $mod+l exec $lockman
 
 # Input configuration (swaymsg -t get_inputs)
-input "SynPS/2 Synaptics TouchPad" {}
-input "AT Translated Set 2 keyboard" {}
+input "SynPS/2 Synaptics TouchPad" {
+}
+input "AT Translated Set 2 keyboard" {
+}
 
 ### Key bindings
 # Start a terminal
@@ -123,7 +125,8 @@ client.background       $base07
 
 bar {
     position top
-    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
+    #status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
+    status_command i3blocks
     colors {
 	background $base00
 	separator  $base01

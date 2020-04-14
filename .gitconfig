@@ -44,7 +44,7 @@
     added = green bold
     changed = yellow bold
     deleted = red bold
-    untracked = black bold
+    untracked = white
 [log]
     decorate = true
     abbrevCommit = true
@@ -52,6 +52,8 @@
     amend = commit --amend
     ammend = amend
     amen = commit --amend --no-edit
+    revert-amend = reset --soft HEAD@{1}
+    #git ls-files -m -o --exclude-standard | fzf --print0 -m | xargs -0 -t -o git add
 
     cfg = config --global -l
     co = checkout

@@ -1,0 +1,24 @@
+# Emojis and characters for the status bar
+# 💎 💻 💡 🔌 ⚡ 📁 \|
+
+# Global properties
+separator=true
+separator_block_width=15
+
+[uptime]
+interval=60
+command=echo "uptime:$(uptime | cut -d ',' -f1  | cut -d ' ' -f4,5)"
+
+[wifi]
+interval=60
+label=wifi:
+INTERFACE=wlp4s0
+command=~/.config/i3blocks/blocklets/wifi/wifi
+
+[battery]
+interval=60
+command=echo "battery:$(cat /sys/class/power_supply/BAT0/capacity)%"
+
+[time]
+command=date '+%Y-%m-%d %H:%M'
+interval=60
