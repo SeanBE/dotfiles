@@ -1,9 +1,10 @@
-# Emojis and characters for the status bar
-# 💎 💻 💡 🔌 ⚡ 📁 \|
-
 # Global properties
 separator=true
-separator_block_width=15
+separator_block_width=30
+
+[nm-vpn]
+interval=30
+command=~/.config/i3blocks/blocklets/nm-vpn/nm-vpn
 
 [uptime]
 interval=60
@@ -15,9 +16,36 @@ label=wifi:
 INTERFACE=wlp4s0
 command=~/.config/i3blocks/blocklets/wifi/wifi
 
+[ssid]
+interval=61
+INTERFACE=wlp4s0
+command=~/.config/i3blocks/blocklets/ssid/ssid
+
+[volume]
+LABEL=♪
+STEP=5%
+signal=10
+interval=once
+command=~/.config/i3blocks/blocklets/volume/volume
+
+[cpu_usage2]
+markup=pango
+interval=persist
+WARN_PERCENT=0
+CRIT_PERCENT=0
+command=~/.config/i3blocks/blocklets/cpu_usage2/cpu_usage2
+
+[memory]
+label=MEM
+interval=30
+command=~/.config/i3blocks/blocklets/memory/memory
+
 [battery]
 interval=60
-command=echo "battery:$(cat /sys/class/power_supply/BAT0/capacity)%"
+LABEL=battery:
+BAT_NUMBER=0
+command=~/.config/i3blocks/blocklets/battery/battery
+#command=echo "battery:$(cat /sys/class/power_supply/BAT0/capacity)%"
 
 [time]
 command=date '+%Y-%m-%d %H:%M'
