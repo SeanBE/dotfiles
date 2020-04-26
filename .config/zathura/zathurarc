@@ -1,0 +1,5 @@
+set smooth-scroll true
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+include zathura_theme
