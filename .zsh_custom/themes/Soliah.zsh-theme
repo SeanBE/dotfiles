@@ -1,3 +1,5 @@
+# Originally from https://github.com/ohmyzsh/ohmyzsh/blob/master/themes/Soliah.zsh-theme
+# TODO: Prefix prompt with ($(pyenv version-name)) when pyenv virtualenv drops prompt
 PROMPT='%{$fg[blue]%}%n%{$reset_color%}@%{$fg[red]%}%M%{$reset_color%}: %{$fg[blue]%}%~%b%{$reset_color%}$(git_time_since_commit)$(check_git_prompt_info)
 $ '
 
@@ -26,16 +28,6 @@ function check_git_prompt_info() {
             echo "%{$fg[magenta]%}detached-head%{$reset_color%})"
         else
             echo "$(git_prompt_info)"
-        fi
-    fi
-}
-
-# Determine if we are using a gemset.
-function rvm_gemset() {
-    if hash rvm 2>/dev/null; then
-        GEMSET=`rvm gemset list | grep '=>' | cut -b4-`
-        if [[ -n $GEMSET ]]; then
-            echo "%{$fg[yellow]%}$GEMSET%{$reset_color%}|"
         fi
     fi
 }
@@ -73,15 +65,15 @@ function git_time_since_commit() {
             fi
 
             if [ "$HOURS" -gt 24 ]; then
-                echo "($(rvm_gemset)$COLOR${DAYS}d${SUB_HOURS}h${SUB_MINUTES}m%{$reset_color%}|"
+                echo "($COLOR${DAYS}d${SUB_HOURS}h${SUB_MINUTES}m%{$reset_color%}|"
             elif [ "$MINUTES" -gt 60 ]; then
-                echo "($(rvm_gemset)$COLOR${HOURS}h${SUB_MINUTES}m%{$reset_color%}|"
+                echo "($COLOR${HOURS}h${SUB_MINUTES}m%{$reset_color%}|"
             else
-                echo "($(rvm_gemset)$COLOR${MINUTES}m%{$reset_color%}|"
+                echo "($COLOR${MINUTES}m%{$reset_color%}|"
             fi
         else
             COLOR="$ZSH_THEME_GIT_TIME_SINCE_COMMIT_NEUTRAL"
-            echo "($(rvm_gemset)$COLOR~|"
+            echo "($COLOR~|"
         fi
     fi
 }
