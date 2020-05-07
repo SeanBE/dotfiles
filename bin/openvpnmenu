@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Nasty little script to manage my openvpn connections with rofi
+
+SUDO='sudo'
+CONFIG_EXT=conf
+CONFIG_DIR="$HOME/.openvpn"
+PID_DIR=/var/run/openvpn-client
+configs=$(find "$CONFIG_DIR" -name '*.'"$CONFIG_EXT" -printf '%f\n')
+
+declare -a options
+for cfg in $configs; do
+	if ! pgrep -ax openvpn| grep '\-\-config '"$CONFIG_DIR/$cfg" > /dev/null; then
+		options+=( "Connect to $cfg" )
+	else
+		options+=( "Disconnect from $cfg" ) #${cfg%%.*}
+	fi
+done
+
+nlines="${#options[@]}"
+choice=$(echo -e "$(printf "%s\n" "${options[@]}")" | rofi -dmenu -i -p vpn -width 500 -lines "$nlines")
+action=$(echo "$choice" | cut -d' ' -f1)
+config=$(echo "$choice" | cut -d' ' -f3)
+case $action in
+	"Connect")
+		$SUDO openvpn --daemon --verb 9 --writepid "$PID_DIR/${config%%.*}.pid" --config "$CONFIG_DIR/$config";;
+	"Disconnect")
+		$SUDO kill -9 "$(pgrep -ax openvpn| grep '\-\-config '"$CONFIG_DIR/$config" | cut -d' ' -f1)"
+esac
