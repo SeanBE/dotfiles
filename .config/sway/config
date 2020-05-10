@@ -22,6 +22,10 @@ input "AT Translated Set 2 keyboard" {
 }
 
 ### Key bindings
+
+bindsym $mod+o exec --no-startup-id ~/bin/openvpnmenu
+bindsym $mod+b exec --no-startup-id /opt/bin/rofi-bluetooth
+
 # Start a terminal
 bindsym $mod+x exec $term
 
@@ -101,7 +105,6 @@ bindsym $mod+r mode "resize"
 bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
-
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Brightness
@@ -119,6 +122,10 @@ client.urgent           $base08 $base08 $base00 $base08 $base08
 client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background       $base07
 
+font pango:monospace 0
+titlebar_border_thickness 0                                                     
+titlebar_padding 0
+
 bar {
     position top
     status_command i3blocks
@@ -134,6 +141,7 @@ bar {
 	urgent_workspace    $base08 $base08 $base00
 	binding_mode        $base00 $base0A $base00
     }
+	font pango:DejaVu Sans Mono 10
 }
 
 include /etc/sway/config.d/*
