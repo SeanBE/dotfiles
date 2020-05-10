@@ -1,0 +1,9 @@
+# global configuration 
+max-visible=4
+sort=-time
+anchor=top-right
+
+# touch/button
+on-touch=dismiss
+
+# style options are joined in via base16 manager to create config
