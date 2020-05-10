@@ -23,6 +23,7 @@ input "AT Translated Set 2 keyboard" {
 
 ### Key bindings
 
+bindsym $mod+m exec --no-startup-id ~/bin/mountmenu
 bindsym $mod+o exec --no-startup-id ~/bin/openvpnmenu
 bindsym $mod+b exec --no-startup-id /opt/bin/rofi-bluetooth
 
@@ -33,7 +34,7 @@ bindsym $mod+x exec $term
 bindsym $mod+Shift+q kill
 
 # Start your launcher
-bindsym $mod+d exec --no-startup-id rofi -show run  -m -1 
+bindsym $mod+d exec --no-startup-id rofi -show run
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -123,7 +124,7 @@ client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background       $base07
 
 font pango:monospace 0
-titlebar_border_thickness 0                                                     
+titlebar_border_thickness 0
 titlebar_padding 0
 
 bar {

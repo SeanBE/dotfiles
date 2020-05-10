@@ -1,0 +1,36 @@
+#!/bin/sh
+SUDO='sudo'
+
+# only listing SCSI partitions
+partitions=$(lsblk -nrpo "name,type,label,mountpoint" |
+	awk '$1~"/dev/sd"&&$2=="part"{printf "%s %s %s\n",$1,$3,$4}')
+if [ -z "$partitions" ]; then exit 1; fi
+
+options=$(echo "$partitions" |
+	awk '{printf ($3 == "" ? "Mount" : "Unmount") " %s (%s)\n", $1, $2}')
+nlines=$(echo "$partitions" | wc -l)
+
+# https://github.com/davatorium/rofi/issues/559 need to set -i with -dmenu
+choice=$(echo "$options" | rofi -dmenu -i -width 500 -lines "$nlines")
+
+device=$(echo "$choice" | cut -d' ' -f2)
+name=$(echo "$choice" | cut -d' ' -f3)
+
+case $choice in
+Mount*)
+	# make sure /mnt/device exists
+	if ! $SUDO mount "$device" "/mnt/${device##*/}"; then
+		notify-send -u critical "Mount Failed"
+		exit 1
+	else
+		notify-send "Mounted $name"
+	fi
+	;;
+Unmount*)
+	if ! $SUDO udisksctl unmount -b "$device" && $SUDO udisksctl power-off -b "$device"; then
+		notify-send -u critical "Umount Failed" && exit 1
+	else
+		notify-send "Unmounted $name"
+	fi
+	;;
+esac
