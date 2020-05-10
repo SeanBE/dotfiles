@@ -4,6 +4,7 @@ export BASE16_SHELL=$HOME/.config/base16-shell/
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
 export PATH=${PATH}:$HOME/.bin
+export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
 export GOPATH=$HOME/dev/golang
 export PATH=${PATH}:${GOPATH}/bin
