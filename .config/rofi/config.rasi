@@ -1,5 +1,6 @@
 configuration {
 		m: "-5";
+		case-sensitive: false;
 /*	modi: "window,run,ssh";*/
 /*	width: 50;*/
 /*	lines: 15;*/
@@ -28,7 +29,6 @@ configuration {
 /*	ignored-prefixes: "";*/
 /*	sort: false;*/
 /*	sorting-method: ;*/
-/*	case-sensitive: false;*/
 /*	cycle: true;*/
 /*	sidebar-mode: false;*/
 /*	eh: 1;*/
