@@ -3,9 +3,11 @@
 [core]
     excludesfile = ~/.gitignore.global
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
-    pager = delta --theme=base16 --plus-color="#012800" --minus-color="#340001" 
+    pager = delta --theme='base16' --plus-color="#012800" --minus-color="#340001" 
 [interactive]
     diffFilter = delta --color-only
+[absorb] # tummychow/git-absorb
+    maxStack=10 # max number of commits to look into for fixup commits
 [include]
     path = ~/.gitconfig.local # includes user section (name, email..)
 [includeIf "gitdir:~/dev/work/"]
@@ -35,13 +37,7 @@
 [color "branch"]
     current = yellow bold
     local = green bold
-    remote = cyan bold
-[color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
+    remote = cyan
 [color "status"]
     added = green bold
     changed = yellow bold
@@ -55,7 +51,6 @@
     ammend = amend
     amen = commit --amend --no-edit
     revert-amend = reset --soft HEAD@{1}
-    #git ls-files -m -o --exclude-standard | fzf --print0 -m | xargs -0 -t -o git add
 
     cfg = config --global -l
     co = checkout
@@ -102,4 +97,3 @@
     rs = rebase --skip
 
     whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
-    whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
