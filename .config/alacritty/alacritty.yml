@@ -14,6 +14,24 @@ shell:
   args:
     - --login
 
+font:
+  size: 10.0
+  normal:
+    family: Source Code Pro
+    style: SemiBold
+
+  bold:
+    family: Source Code Pro
+    style: Bold
+
+  italic:
+    family: Source Code Pro
+    style: Italic
+
+  bold_italic:
+    font: Source Code Pro
+    style: Bold Italic
+
 #key_bindings:
   # (Windows, Linux, and BSD only)
   #- { key: V,        mods: Control|Shift, action: Paste            }
