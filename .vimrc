@@ -23,7 +23,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'daviesjamie/vim-base16-lightline'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'airblade/vim-gitgutter'
-Plug 'vimwiki/vimwiki'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'w0rp/ale'
 "Plug 'https://github.com/python-mode/python-mode'

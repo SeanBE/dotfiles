@@ -8,7 +8,7 @@ set $term alacritty
 set $background /usr/share/backgrounds/fedora-workstation/himalayan-desert-mountains.jpg
 
 # Output (swaymsg -t get_outputs)
-output eDP-1 scale 2
+output eDP-1 scale 1
 output * bg $background fill
 output eDP-1 resolution 2560x1440 position 2560,0
 
