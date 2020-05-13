@@ -1,46 +1,37 @@
-source $HOME/.exports
-source $HOME/.functions
+plugins=(git gitfast python docker docker-compose z jsontools zsh-autosuggestions ssh-agent)
 
-eval $(dircolors | sed 's/ow=\([0-9]*\);[0-9]*/ow=\1;40/')
+# ssh agent plugin
+zstyle :omz:plugins:ssh-agent lifetime 4h
+# Force *no* SSH-keys loaded; we want to load via AddKeysToAgent so we aren't prompted on login
+zstyle :omz:plugins:ssh-agent identities ""
 
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+# disable magic functions (bracketd paste plugin)
+DISABLE_MAGIC_FUNCTIONS=true
 
-plugins=(git aws pip python docker docker-compose z jsontools)
-
-function kubectl() {
-        if ! type __start_kubectl >/dev/null 2>&1; then
-                source <(command kubectl completion zsh)
-        fi
-        command kubectl "$@"
-}
+export ZSH_THEME="Soliah"
+export ZSH=$HOME/.oh-my-zsh
+export ZSH_CUSTOM=$HOME/.zsh_custom
 
 source $ZSH/oh-my-zsh.sh
 
-# TODO check this
-alias mount_usb="sudo mount /dev/sdb1 /mnt/usb"
+# setting umask here since its being set to 0077 somewhere...
+umask 0002
 
-alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+source $HOME/.aliases
+source $HOME/.exports
+source $HOME/.functions
 
-# TODO respect .gitiginore??
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if _has fzf; then
+	[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-alias ack=ag
-alias ag='ag --color-path 1\;31 --color-match 1\;32 --color'
+	export FZF_DEFAULT_OPTS="--height 20% --color=16"
+	#if _has fzf && _has ag; then
+	export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs'
+	export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+	export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+fi
 
+# Ctrl+XX to edit current cli
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^x^x' edit-command-line
-
-# figure out auto way to bring in these https://github.com/nicodebo/base16-fzf/tree/master/bash
-#if _has fzf && _has ag; then
-export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
-
-export HIST_SAVE_NO_DUPS
-setopt HIST_IGNORE_SPACE
-# preview not working
-export FZF_DEFAULT_OPTS="--height 40% --color=16"
-
-# TODO export TODO file here.
-echo "TODO add disk usage here."
