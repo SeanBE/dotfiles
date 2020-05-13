@@ -7,13 +7,24 @@ set $right l
 set $term alacritty
 set $background /usr/share/backgrounds/fedora-workstation/himalayan-desert-mountains.jpg
 
+# Idle configuration
+set $lock swaylock
+exec swayidle \
+    timeout 300 'exec $lock' \
+    timeout 600 'swaymsg "output * dpms off"' \
+    after-resume 'swaymsg "output * dpms on"' \
+    before-sleep 'exec $lock'
+
+# Turn screen off 9min30sec.
+# Lock Screen in 10 min (30sec after screen off)
+# Lock screen when going to sleep
+
+exec_always --no-startup-id mako
+
 # Output (swaymsg -t get_outputs)
 output eDP-1 scale 1
 output * bg $background fill
 output eDP-1 resolution 2560x1440 position 2560,0
-
-set $lockman exec sh ~/.config/sway/scripts/lockman.sh
-bindsym $mod+l exec $lockman
 
 # Input configuration (swaymsg -t get_inputs)
 input "SynPS/2 Synaptics TouchPad" {
@@ -21,10 +32,12 @@ input "SynPS/2 Synaptics TouchPad" {
 input "AT Translated Set 2 keyboard" {
 }
 
-### Key bindings
+#TODO: https://github.com/davatorium/rofi/issues/97
+#exec rofi -rnow -run-command "bash -i -c '{cmd}'"
 
-bindsym $mod+m exec --no-startup-id ~/bin/mountmenu
-bindsym $mod+o exec --no-startup-id ~/bin/openvpnmenu
+### Key bindings
+bindsym $mod+m exec --no-startup-id SUDO_ASKPASS=~/bin/askpassrofi.sh ~/bin/mountmenu
+bindsym $mod+o exec --no-startup-id SUDO_ASKPASS=~/bin/askpassrofi.sh ~/bin/openvpnmenu
 bindsym $mod+b exec --no-startup-id /opt/bin/rofi-bluetooth
 
 # Start a terminal
@@ -45,9 +58,6 @@ floating_modifier $mod normal
 
 # Reload the configuration file
 bindsym $mod+Shift+c reload
-
-# Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
 # Move your focus around
 bindsym $mod+Left focus left
@@ -102,15 +112,26 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+# Shutdown, Reboot, Lock Screen, and Logout 
+mode "power" {
+    bindsym r         exec --no-startup-id,systemctl reboot, mode "default"
+    bindsym p         exec --no-startup-id systemctl poweroff, mode "default"
+    bindsym l         exec sh ~/.config/sway/scripts/lockman.sh, mode "default"
+    bindsym q         exec --no-startup-id swaymsg exit, mode "default"
+    bindsym Return    mode "default"
+    bindsym Escape    mode "default"
+}
+bindsym $mod+Shift+p      mode "power"
+
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks
-bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
-bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
+bindsym --locked XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks
+bindsym --locked XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
+bindsym --locked XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Brightness
-bindsym XF86MonBrightnessUp exec light -A 5
-bindsym XF86MonBrightnessDown exec light -U 5
+bindsym --locked XF86MonBrightnessUp exec light -A 5
+bindsym --locked XF86MonBrightnessDown exec light -U 5
 
 # Base16 configuration
 include colorscheme
