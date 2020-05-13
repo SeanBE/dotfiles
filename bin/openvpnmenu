@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Nasty little script to manage my openvpn connections with rofi
+# manage my openvpn connections with rofi
 
 SUDO='sudo'
 CONFIG_EXT=conf
@@ -10,10 +10,10 @@ configs=$(find "$CONFIG_DIR" -name '*.'"$CONFIG_EXT" -printf '%f\n')
 
 declare -a options
 for cfg in $configs; do
-	if ! pgrep -ax openvpn| grep '\-\-config '"$CONFIG_DIR/$cfg" > /dev/null; then
-		options+=( "Connect to $cfg" )
+	if ! pgrep -ax openvpn | grep '\-\-config '"$CONFIG_DIR/$cfg" >/dev/null; then
+		options+=("Connect to $cfg")
 	else
-		options+=( "Disconnect from $cfg" ) #${cfg%%.*}
+		options+=("Disconnect from $cfg") #${cfg%%.*}
 	fi
 done
 
@@ -22,8 +22,16 @@ choice=$(echo -e "$(printf "%s\n" "${options[@]}")" | rofi -dmenu -i -p vpn -wid
 action=$(echo "$choice" | cut -d' ' -f1)
 config=$(echo "$choice" | cut -d' ' -f3)
 case $action in
-	"Connect")
-		$SUDO openvpn --daemon --verb 9 --writepid "$PID_DIR/${config%%.*}.pid" --config "$CONFIG_DIR/$config";;
-	"Disconnect")
-		$SUDO kill -9 "$(pgrep -ax openvpn| grep '\-\-config '"$CONFIG_DIR/$config" | cut -d' ' -f1)"
+"Connect")
+	$SUDO openvpn --daemon --verb 9 --writepid "$PID_DIR/${config%%.*}.pid" --config "$CONFIG_DIR/$config"
+	# using daemon so not sure if successful.
+	# TODO: use up callback from daemon, successful tcp conn with openvpn management interface, 
+	# or wait X secs before grepping for active process
+	notify-send "Connected to $config"
+	;;
+"Disconnect")
+	$SUDO kill -9 "$(pgrep -ax openvpn | grep '\-\-config '"$CONFIG_DIR/$config" | cut -d' ' -f1)"
+	# TODO: same as above.
+	notify-send "Disconnected from $config"
+	;;
 esac
