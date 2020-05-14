@@ -82,7 +82,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Language
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'fatih/vim-go', { 'for': 'go' }

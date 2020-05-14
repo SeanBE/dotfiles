@@ -21,15 +21,11 @@ source $HOME/.aliases
 source $HOME/.exports
 source $HOME/.functions
 
-if _has fzf; then
-	[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-	export FZF_DEFAULT_OPTS="--height 20% --color=16"
-	#if _has fzf && _has ag; then
-	export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs'
-	export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-	export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
-fi
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS="--height 20% --color=16"
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Ctrl+XX to edit current cli
 autoload -U edit-command-line
