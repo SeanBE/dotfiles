@@ -1,0 +1,25 @@
+# managed by base16-manager now (and skippin worktree)
+
+# pane number display (C-a q)
+set-option -g display-panes-active-colour blue
+set-option -g display-panes-colour brightred
+
+# status bar
+set -g status-fg white
+set -g status-bg black
+
+# default window title colors
+setw -g window-status-style bg=default,fg=brightblue
+
+# active window title colors
+setw -g window-status-current-style bg=default,fg=brightred
+
+# pane border
+set -g pane-border-style fg=brightblue
+set -g pane-active-border-style fg=brightblue
+
+# message text
+set -g message-style bg=black,fg=brightred
+
+# mode (C-a w)
+setw -g mode-style bg=brightblue,fg=black
