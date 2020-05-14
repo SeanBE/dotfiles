@@ -166,4 +166,4 @@ bar {
 	font pango:DejaVu Sans Mono 10
 }
 
-include /etc/sway/config.d/*
+include $HOME/.config/sway/config.d/*
