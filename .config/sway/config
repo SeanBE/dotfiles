@@ -7,18 +7,14 @@ set $right l
 set $term alacritty
 set $background /usr/share/backgrounds/fedora-workstation/himalayan-desert-mountains.jpg
 
-# Idle configuration
-set $lock swaylock
-exec swayidle \
-    timeout 300 'exec $lock' \
+# Idle configuration #TODO: test this later
+exec swayidle -w \
+    timeout 300 'swaylock -f -i $background' \
     timeout 600 'swaymsg "output * dpms off"' \
-    after-resume 'swaymsg "output * dpms on"' \
-    before-sleep 'exec $lock'
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -f -i $background'
 
-# Turn screen off 9min30sec.
-# Lock Screen in 10 min (30sec after screen off)
-# Lock screen when going to sleep
-
+# Notification daemon
 exec_always --no-startup-id mako
 
 # Output (swaymsg -t get_outputs)
