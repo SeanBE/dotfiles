@@ -67,18 +67,6 @@ Plug '~/.local/share/base16-manager/chriskempson/base16-vim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-"function! BuildYCM(info)
-"  " info is a dictionary with 3 fields
-"  " - name:   name of the plugin
-"  " - status: 'installed', 'updated', or 'unchanged'
-"  " - force:  set on PlugInstall! or PlugUpdate!
-"  if a:info.status == 'installed' || a:info.force
-"    !./install.py
-"  endif
-"endfunction
-
-"Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-
 " Language
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ekalinin/Dockerfile.vim'
