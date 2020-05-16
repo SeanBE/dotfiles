@@ -1,5 +1,7 @@
 set nocompatible	" makes vim more vi-compatible (off)
 set noerrorbells	" ring bell for messages (off)
+
+filetype plugin indent on	" turns on detection plugin and indent
 syntax on 		" basic syntax highlighting
 
 set hidden
@@ -30,11 +32,9 @@ set history=1000  	" Keep more history, default is 20
 set visualbell
 set t_vb=
 
+set signcolumn=yes
 set clipboard=unnamedplus
-
 set wildignore+=.git/**,node_modules/*
-
-filetype plugin indent on	" turns on detection plugin and indent
 
 let mapleader = ","
 "let mapleader="\<Space>"
@@ -68,6 +68,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Language
+" TODO: read https://github.com/neoclide/coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
