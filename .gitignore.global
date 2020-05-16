@@ -2,6 +2,11 @@
 ###################
 tags
 .rgignore
+
+# Python #
+###################
+__pycache__
+.mypy_cache
 .python-version
 
 # Compiled source #
