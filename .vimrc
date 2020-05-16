@@ -70,7 +70,14 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Language
 " TODO: read https://github.com/neoclide/coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+let g:coc_global_extensions = [
+      \ 'coc-python'
+\]
+autocmd FileType markdown let b:coc_suggest_disable = 1
+
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'godlygeek/tabular' " dep for plasticboy/vim-markdown
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
@@ -93,6 +100,12 @@ source ~/.vim/colorscheme.vim
 let g:lightline = {
      \ 'colorscheme': 'base16',
 \}
+
+" vim-markdown
+let g:vim_markdown_folding_disabled = 1
+"https://github.com/plasticboy/vim-markdown/issues/126
+let g:vim_markdown_auto_insert_bullets = 1
+let g:vim_markdown_new_list_item_indent = 0
 
 " FZF
 let g:fzf_preview_window = ''
