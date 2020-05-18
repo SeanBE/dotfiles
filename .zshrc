@@ -1,4 +1,5 @@
-plugins=(git gitfast python docker docker-compose z jsontools zsh-autosuggestions ssh-agent)
+#zmodload zsh/zprof
+plugins=(git gitfast docker docker-compose z zsh-autosuggestions ssh-agent)
 
 # ssh agent plugin
 zstyle :omz:plugins:ssh-agent lifetime 4h
@@ -31,3 +32,5 @@ export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^x^x' edit-command-line
+#zprof
+#zmodload -u zsh/zprof
