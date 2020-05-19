@@ -27,11 +27,11 @@ case $action in
 	# using daemon so not sure if successful.
 	# TODO: use up callback from daemon, successful tcp conn with openvpn management interface, 
 	# or wait X secs before grepping for active process
-	notify-send "Connected to $config"
+	notify-send -t 5000 "Connected to $config"
 	;;
 "Disconnect")
 	$SUDO kill -9 "$(pgrep -ax openvpn | grep '\-\-config '"$CONFIG_DIR/$config" | cut -d' ' -f1)"
 	# TODO: same as above.
-	notify-send "Disconnected from $config"
+	notify-send -t 5000 "Disconnected from $config"
 	;;
 esac
