@@ -68,13 +68,13 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Language
-" TODO: read https://github.com/neoclide/coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 let g:coc_global_extensions = [
       \ 'coc-python'
 \]
-autocmd FileType markdown let b:coc_suggest_disable = 1
+autocmd FileType * let b:coc_suggest_disable = 1
+autocmd FileType python let b:coc_suggest_disable = 0
 
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'godlygeek/tabular' " dep for plasticboy/vim-markdown
@@ -148,7 +148,10 @@ let g:ale_linters = {
 let g:ale_rust_rls_toolchain = ''
 let g:ale_rust_rls_executable = 'rust-analyzer'
 
+let g:ale_python_black_options = '-S' " skip string normalization
+
 "" Netrw
+" TODO: setup https://github.com/justinmk/vim-dirvish
 let g:netrw_banner = 0
 let g:netrw_winsize = 15
 let g:netrw_liststyle = 3
