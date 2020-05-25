@@ -1,5 +1,4 @@
 set nocompatible	" makes vim more vi-compatible (off)
-set noerrorbells	" ring bell for messages (off)
 
 filetype plugin indent on	" turns on detection plugin and indent
 syntax on 		" basic syntax highlighting
@@ -7,34 +6,44 @@ syntax on 		" basic syntax highlighting
 set hidden
 set confirm
 set modeline
-set expandtab
 set nowrap
+set wildmenu
 
 set number relativenumber
-set incsearch
 set splitright
+set splitbelow
 
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
 
 set noswapfile
 set nobackup
 
 set smartindent
-set smartcase
 set scrolloff=3
+
+set incsearch
+set smartcase
+set ignorecase
+set hlsearch
+nnoremap <C-h> :nohlsearch<cr>
 
 set laststatus=2	" lightline
 set encoding=utf-8
 set history=1000  	" Keep more history, default is 20
 
+set noerrorbells	" ring bell for messages (off)
 set visualbell
 set t_vb=
 
 set signcolumn=yes
 set clipboard=unnamedplus
 set wildignore+=.git/**,node_modules/*
+
+set noshowmode
+nmap Q <Nop>
 
 let mapleader = ","
 "let mapleader="\<Space>"
