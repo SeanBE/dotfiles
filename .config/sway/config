@@ -117,6 +117,7 @@ mode "power" {
     bindsym Return    mode "default"
     bindsym Escape    mode "default"
 }
+bindsym $mod+l      exec sh ~/.config/sway/scripts/lockman.sh, mode "default"
 bindsym $mod+Shift+p      mode "power"
 
 # Pulse Audio controls
