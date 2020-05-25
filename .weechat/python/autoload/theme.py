@@ -1,5 +1,5 @@
 # Adapted from SÃ©bastien Helleu <flashcode@flashtux.org> theme.py.
-# This script simply installs weechat_dir/current.theme at startup.
+# This script simply installs weechat_dir/theme.conf at startup.
 # If you use this, make sure to version control because there is no undo.
 
 import os
@@ -82,9 +82,9 @@ if __name__ == '__main__':
             SCRIPT_NAME, SCRIPT_AUTHOR, SCRIPT_VERSION,
             SCRIPT_LICENSE, SCRIPT_DESC, '', ''
     ):
-        filename = weechat.info_get('weechat_dir', '') + '/current.theme'
+        filename = weechat.info_get('weechat_dir', '') + '/theme.conf'
         if not os.path.isfile(filename):
-            prnt_error('Error finding current.theme')
+            prnt_error('Error finding theme.conf')
         else:
             try:
                 install_theme(filename)
