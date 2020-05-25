@@ -15,6 +15,9 @@ export ZSH_CUSTOM=$HOME/.zsh_custom
 
 source $ZSH/oh-my-zsh.sh
 
+HISTSIZE=50000
+SAVEHIST=50000
+
 # setting umask here since its being set to 0077 somewhere...
 umask 0002
 
