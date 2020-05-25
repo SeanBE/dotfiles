@@ -100,6 +100,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'vim-scripts/L9'	" extra vim utility funcs
 call plug#end()
 
@@ -124,6 +125,13 @@ nmap <Leader>t :Files<CR>
 nmap <Leader>r :Tags<CR>
 nmap <Leader>s :Snippets<CR>
 nmap <Leader>f :Rg<CR>
+
+" https://github.com/junegunn/fzf.vim/pull/704#issuecomment-450655634 
+command! -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>),
+  \   1,
+  \   {'options': '--delimiter : --nth 2..'})
 
 " Ale
 
