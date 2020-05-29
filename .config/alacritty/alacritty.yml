@@ -11,8 +11,6 @@ visual_bell:
 
 shell:
   program: /bin/zsh
-  args:
-    - --login
 
 font:
   size: 10.0
