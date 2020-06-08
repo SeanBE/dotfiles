@@ -41,6 +41,8 @@
 \pset border 2
 \set VERBOSITY verbose
 
+\setenv PAGER 'less -S'
+
 \ir .psql/.psqlrc-:HOST-:DBNAME
 
 -- Set noisyness back to normal
