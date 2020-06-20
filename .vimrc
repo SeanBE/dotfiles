@@ -6,17 +6,17 @@ syntax on 		" basic syntax highlighting
 set hidden
 set confirm
 set modeline
-set nowrap
+set wrap
 set wildmenu
 
 set number relativenumber
 set splitright
 set splitbelow
 
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
+set tabstop=4     " a hard TAB displays as 4 columns
+set shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns
+set softtabstop=4 " insert/delete 4 spaces when hitting a TAB/BACKSPACE
+set expandtab     " insert spaces when hitting TABs
 
 set noswapfile
 set nobackup
@@ -30,7 +30,6 @@ set ignorecase
 set hlsearch
 nnoremap <C-h> :nohlsearch<cr>
 
-set laststatus=2	" lightline
 set encoding=utf-8
 set history=1000  	" Keep more history, default is 20
 
@@ -42,7 +41,10 @@ set signcolumn=yes
 set clipboard=unnamedplus
 set wildignore+=.git/**,node_modules/*
 
+" for lightline 
 set noshowmode
+set laststatus=2
+
 nmap Q <Nop>
 
 let mapleader = ","
@@ -73,8 +75,9 @@ Plug 'airblade/vim-gitgutter'
 Plug '~/.local/share/base16-manager/chriskempson/base16-vim'
 
 " Search
+Plug '~/.zinit/plugins/junegunn---fzf'
+"set rtp+=
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Language
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -95,6 +98,7 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 " Misc
 Plug 'w0rp/ale'
+Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
@@ -141,24 +145,28 @@ let g:ale_sign_error = 'E'
 let g:ale_sign_warning = 'W'
 highlight! def link ALEErrorSign DiffDelete
 
+" https://github.com/fatih/vim-go/issues/2829
+let g:go_highlight_diagnostic_errors = 0
+let g:go_highlight_diagnostic_warnings = 0
+
 let g:ale_go_golangci_lint_options = ''
 
 let g:ale_fixers = {
-\     'sh': ['remove_trailing_lines', 'shfmt', 'trim_whitespace'],
-\     'python': ['black'],
-\     'rust': ['remove_trailing_lines', 'rustfmt', 'trim_whitespace'],
-\     'javascript': ['eslint', 'prettier'],
-\     'vim': ['remove_trailing_lines', 'trim_whitespace'],
-\     'go': ['gofmt', 'goimports', 'remove_trailing_lines', 'trim_whitespace']
+\   'sh': ['remove_trailing_lines', 'shfmt', 'trim_whitespace'],
+\   'python': ['black'],
+\   'rust': ['remove_trailing_lines', 'rustfmt', 'trim_whitespace'],
+\   'javascript': ['eslint', 'prettier'],
+\   'vim': ['remove_trailing_lines', 'trim_whitespace'],
+\   'go': ['gofmt', 'goimports', 'remove_trailing_lines', 'trim_whitespace']
 \}
 
 
 let g:ale_linters = {
-\			'sh': ['language_server', 'shell', 'shellcheck'],
-\     'rust': ['cargo', 'rls'],
-\     'python': ['pylint', 'flake8', 'mypy'],
-\     'go': ['gofmt', 'golangci-lint', 'govet'],
-\    'javascript': ['eslint', 'prettier']
+\   'sh': ['language_server', 'shell', 'shellcheck'],
+\   'rust': ['cargo', 'rls'],
+\   'python': ['pylint', 'flake8', 'mypy'],
+\   'go': ['golangci-lint', 'gobuild'],
+\   'javascript': ['eslint', 'prettier']
 \}
 
 " https://github.com/rust-lang/rfcs/pull/2912
@@ -197,4 +205,4 @@ noremap <silent> <C-N> :call ToggleNetrw()<CR>
 
 " Snippets
 let g:UltiSnipsSnippetsDir = '~/.vim/snips/'
-let g:UltiSnipsSnippetDirectories=[$HOME."/.vim/snips", "UltiSnips"] " TODO: make sure $HOME works..
+let g:UltiSnipsSnippetDirectories=[$HOME."/.vim/snips", "UltiSnips"]
