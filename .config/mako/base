@@ -2,6 +2,8 @@
 max-visible=4
 sort=-time
 anchor=top-right
+default-timeout = 10000
+# ignore-timeout 0|1 ignore expire timeout and use default-timeout instead.
 
 # touch/button
 on-touch=dismiss
