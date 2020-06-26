@@ -28,7 +28,6 @@ zinit lucid for \
 zinit ice as"completion"
 zinit snippet OMZP::docker/_docker
 
-
 # FZF
 export FZF_DEFAULT_OPTS="--height 20% --color=16"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
@@ -40,6 +39,17 @@ zinit ice from"gh-r" as"program"
 zinit light junegunn/fzf-bin
 zinit ice multisrc"shell/{key-bindings,completion}.zsh" pick""
 zinit light junegunn/fzf
+
+#export NVM_DIR="/home/sean/.config/nvm";
+#[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+## https://github.com/nvm-sh/nvm/issues/1277#issuecomment-536218082
+#export PATH="$NVM_DIR/versions/node/v$(<$NVM_DIR/alias/default)/bin:$PATH"
+#alias nvm="unalias nvm; [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"; nvm $@"
+
+export NVM_LAZY_LOAD=true
+export NVM_DIR="$HOME/.config/nvm"
+export NVM_SYMLINK_CURRENT=true # nvm use should make a symlink
+zinit light lukechilds/zsh-nvm
 
 zinit light zsh-users/zsh-history-substring-search
 
