@@ -9,4 +9,5 @@ source $HOME/.exports
 source $HOME/.functions
 
 umask 0002  # setting umask here since its being set to 0077 somewhere...
+setopt noflowcontrol; stty -ixon
 #zprof
