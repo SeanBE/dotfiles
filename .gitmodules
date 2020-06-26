@@ -4,7 +4,7 @@
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
-[submodule "/home/sean/.local/share/fonts/source-code-pro"]
+[submodule ".local/share/fonts/source-code-pro"]
     ignore = dirty
-	path = /home/sean/.local/share/fonts/source-code-pro
+	path = .local/share/fonts/source-code-pro
 	url = https://github.com/adobe-fonts/source-code-pro.git
