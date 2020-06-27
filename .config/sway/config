@@ -17,16 +17,14 @@ exec swayidle -w \
 # Notification daemon
 exec_always --no-startup-id mako
 
-# Output (swaymsg -t get_outputs)
-output eDP-1 scale 1
-output * bg $background fill
-output eDP-1 resolution 2560x1440 position 2560,0
-
 # Input configuration (swaymsg -t get_inputs)
 input "SynPS/2 Synaptics TouchPad" {
 }
 input "AT Translated Set 2 keyboard" {
 }
+
+# Output (swaymsg -t get_outputs)
+output * bg $background fill
 
 #TODO: https://github.com/davatorium/rofi/issues/97
 #exec rofi -rnow -run-command "bash -i -c '{cmd}'"
@@ -163,3 +161,4 @@ bar {
 }
 
 include $HOME/.config/sway/config.d/*
+include $HOME/.config/sway/`hostname`.conf
