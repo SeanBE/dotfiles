@@ -9,11 +9,6 @@ export PATH=$(go env GOPATH)/bin:$PATH
 
 # TODO: pyenv and nvm slow here..shouldn't even init here..
 
-# Python
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --no-rehash - zsh)"
-
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 

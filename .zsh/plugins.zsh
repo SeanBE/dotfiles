@@ -40,16 +40,24 @@ zinit light junegunn/fzf-bin
 zinit ice multisrc"shell/{key-bindings,completion}.zsh" pick""
 zinit light junegunn/fzf
 
-#export NVM_DIR="/home/sean/.config/nvm";
-#[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
-## https://github.com/nvm-sh/nvm/issues/1277#issuecomment-536218082
-#export PATH="$NVM_DIR/versions/node/v$(<$NVM_DIR/alias/default)/bin:$PATH"
-#alias nvm="unalias nvm; [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"; nvm $@"
-
 export NVM_LAZY_LOAD=true
 export NVM_DIR="$HOME/.config/nvm"
 export NVM_SYMLINK_CURRENT=true # nvm use should make a symlink
 zinit light lukechilds/zsh-nvm
+# https://github.com/nvm-sh/nvm
+## https://github.com/nvm-sh/nvm/issues/1277#issuecomment-536218082
+export PATH="$NVM_DIR/versions/node/v$(<$NVM_DIR/alias/default)/bin:$PATH"
+#alias nvm="unalias nvm; [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"; nvm $@"
+
+zinit ice atclone'PYENV_ROOT="$PWD" ./libexec/pyenv init --no-rehash - > zpyenv.zsh' \
+    atinit'export PYENV_ROOT="$PWD"' atpull"%atclone" \
+    as"program" pick"bin/pyenv" src"zpyenv.zsh" nocompile"!"
+zinit light pyenv/pyenv
+# TODO: use zinit clone only
+#zinit ice lucid \
+#    atclone'./bin/pyenv-virtualenv-init init - > zpyenv-virtualenv.zsh' \
+#    atpull'%atclone' src'zpyenv-virtualenv.zsh' nocompile'!' sbin'bin/*'
+#zinit light pyenv/pyenv-virtualenv
 
 zinit light zsh-users/zsh-history-substring-search
 

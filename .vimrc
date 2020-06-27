@@ -95,6 +95,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
       \ 'coc-python'
 \]
+
 autocmd FileType * let b:coc_suggest_disable = 1
 autocmd FileType python let b:coc_suggest_disable = 0
 
