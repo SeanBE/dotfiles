@@ -74,6 +74,10 @@ call plug#begin('~/.vim/plugged')
 
 " Visuals
 Plug 'junegunn/goyo.vim'
+
+let g:goyo_width = "90%"
+let g:goyo_height = "80%"
+
 Plug 'majutsushi/tagbar'
 Plug 'itchyny/lightline.vim'
 Plug 'daviesjamie/vim-base16-lightline'
@@ -123,6 +127,7 @@ let g:lightline = {
 
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_no_default_key_mappings = 1
 "https://github.com/plasticboy/vim-markdown/issues/126
 let g:vim_markdown_auto_insert_bullets = 1
 let g:vim_markdown_new_list_item_indent = 0
@@ -182,7 +187,6 @@ let g:ale_rust_rls_executable = 'rust-analyzer'
 let g:ale_python_black_options = '-S' " skip string normalization
 
 "" Netrw
-" TODO: setup https://github.com/justinmk/vim-dirvish
 let g:netrw_banner = 0
 let g:netrw_winsize = 15
 let g:netrw_liststyle = 3
