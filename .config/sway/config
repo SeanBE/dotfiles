@@ -110,12 +110,12 @@ bindsym $mod+r mode "resize"
 mode "power" {
     bindsym r         exec --no-startup-id,systemctl reboot, mode "default"
     bindsym p         exec --no-startup-id systemctl poweroff, mode "default"
-    bindsym l         exec sh ~/.config/sway/scripts/lockman.sh, mode "default"
+    bindsym l         exec sh ~/.config/sway/scripts/lockman.sh $background, mode "default"
     bindsym q         exec --no-startup-id swaymsg exit, mode "default"
     bindsym Return    mode "default"
     bindsym Escape    mode "default"
 }
-bindsym $mod+l      exec sh ~/.config/sway/scripts/lockman.sh, mode "default"
+bindsym $mod+l      exec sh ~/.config/sway/scripts/lockman.sh $background, mode "default"
 bindsym $mod+Shift+p      mode "power"
 
 # Pulse Audio controls
