@@ -1,11 +1,11 @@
+# mako version 1.4
+# https://fedora.pkgs.org/32/fedora-x86_64/mako-1.4-2.fc32.x86_64.rpm.html
+
 # global configuration 
 max-visible=4
 sort=-time
 anchor=top-right
-default-timeout = 10000
+default-timeout=10000
 # ignore-timeout 0|1 ignore expire timeout and use default-timeout instead.
-
-# touch/button
-on-touch=dismiss
 
 # style options are joined in via base16 manager to create config
