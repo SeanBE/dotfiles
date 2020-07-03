@@ -108,7 +108,7 @@ bindsym $mod+r mode "resize"
 
 # Shutdown, Reboot, Lock Screen, and Logout 
 mode "power" {
-    bindsym r         exec --no-startup-id,systemctl reboot, mode "default"
+    bindsym r         exec --no-startup-id systemctl reboot, mode "default"
     bindsym p         exec --no-startup-id systemctl poweroff, mode "default"
     bindsym l         exec sh ~/.config/sway/scripts/lockman.sh $background, mode "default"
     bindsym q         exec --no-startup-id swaymsg exit, mode "default"
