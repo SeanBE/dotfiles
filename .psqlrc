@@ -33,8 +33,8 @@
 -- Protect against results floods
 --\set FETCH_COUNT 1000
 
--- Automatically upcase keywords (works only intermittently)
---\set COMP_KEYWORD_CASE upper
+-- Automatically upcase keywords
+\set COMP_KEYWORD_CASE upper
 
 \x auto
 \pset linestyle unicode
