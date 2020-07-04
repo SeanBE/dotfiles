@@ -26,7 +26,10 @@ zinit lucid for \
     "https://github.com/agkozak/zsh-z/blob/master/zsh-z.plugin.zsh"
 
 zinit ice as"completion"
-zinit snippet OMZP::docker/_docker
+zinit snippet 'https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker'
+
+zinit ice as"completion"
+zinit snippet 'https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose'
 
 # FZF
 export FZF_DEFAULT_OPTS="--height 20% --color=16"
