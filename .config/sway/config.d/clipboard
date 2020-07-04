@@ -1,4 +1,4 @@
-set $clipman ~/dev/go/bin/clipman
+set $clipman ~/.go/bin/clipman
 set $histpath ~/.local/share/clipman-primary.json
 
 exec pkill wl-paste

@@ -2,6 +2,7 @@ alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 alias vi='vimx'
 alias vim='vimx'
+alias dokcer='docker'
 
 alias pip='python -m pip'
 alias ssh='TERM=xterm ssh'

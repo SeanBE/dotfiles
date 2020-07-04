@@ -17,5 +17,7 @@ fi
 export PAGER=less
 export LESS='-R'
 
+
 # TODO: move to installation
+export GOPATH=$HOME/.go
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc

@@ -38,7 +38,7 @@ set visualbell
 set t_vb=
 
 set signcolumn=yes
-set clipboard=unnamedplus
+set clipboard=unnamedplus " unnamed register to the + register
 set wildignore+=.git/**,node_modules/*
 
 " for lightline 
@@ -158,8 +158,10 @@ let g:ale_sign_warning = 'W'
 highlight! def link ALEErrorSign DiffDelete
 
 " https://github.com/fatih/vim-go/issues/2829
+let g:go_def_mapping_enabled = 0
 let g:go_highlight_diagnostic_errors = 0
 let g:go_highlight_diagnostic_warnings = 0
+let g:go_highlight_trailing_whitespace_error=0
 
 let g:ale_go_golangci_lint_options = ''
 

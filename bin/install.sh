@@ -54,7 +54,14 @@ sudo dnf -y install \
     fuse \
     exfat-utils \
     powertop tlp \
-    light
+    light \
+    libffi-devel \
+    bzip2 bzip2-devel \
+    readline-devel \
+    sqlite sqlite-devel \
+    tk-devel \
+    chromium \
+    docker-compose
 
 # TODO: clean this part up.
 # install some languages
@@ -78,6 +85,8 @@ git clone https://github.com/vivien/i3blocks-contrib.git ~/.config/i3blocks/bloc
 
 cd ~/.config/i3blocks/blocklets/cpu_usage2 
 make
+
+curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.27.0
 
 sudo usermod -aG docker "$USER" # satisfy docker post linux reqs.
 sudo systemctl enable docker
