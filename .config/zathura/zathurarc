@@ -1,4 +1,4 @@
-set smooth-scroll true
+# zathura 0.4.5 + girara 0.3.4
 set window-title-home-tilde true
 set statusbar-basename true
 set selection-clipboard clipboard
