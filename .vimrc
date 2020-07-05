@@ -50,6 +50,11 @@ nmap Q <Nop>
 let mapleader = ","
 "let mapleader="\<Space>"
 
+" https://github.com/vim/vim/issues/5157
+" https://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim
+xnoremap <silent> y y :call system("wl-copy", @")<CR>
+nnoremap <silent> p :let @"=substitute(system("wl-paste --no-newline"), '<C-v><C-m>', '', 'g')<CR>p
+
 " https://vim.fandom.com/wiki/Moving_lines_up_or_down
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
