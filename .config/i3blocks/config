@@ -13,12 +13,12 @@ command=echo "uptime:$(uptime | cut -d ',' -f1  | cut -d ' ' -f4,5)"
 [wifi]
 interval=60
 label=wifi:
-INTERFACE=wlp4s0
+INTERFACE=wlp0s20f3
 command=~/.config/i3blocks/blocklets/wifi/wifi
 
 [ssid]
 interval=61
-INTERFACE=wlp4s0
+INTERFACE=wlp0s20f3
 command=~/.config/i3blocks/blocklets/ssid/ssid
 
 [volume]
