@@ -45,6 +45,10 @@ set wildignore+=.git/**,node_modules/*
 set noshowmode
 set laststatus=2
 
+" for better coc.nvim experience
+set updatetime=300
+set shortmess+=c  " Don't pass messages to ins-completion-menu.
+
 nmap Q <Nop>
 
 let mapleader = ","
@@ -98,18 +102,21 @@ Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 let g:coc_global_extensions = [
-      \ 'coc-python'
+    \ 'coc-go',
+    \ 'coc-python',
+    \ 'coc-tsserver',
+    \ 'coc-rust-analyzer'
 \]
-
-autocmd FileType * let b:coc_suggest_disable = 1
-autocmd FileType python let b:coc_suggest_disable = 0
 
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'godlygeek/tabular' " dep for plasticboy/vim-markdown
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
+
+" reminder to run GoInstallBinaries on install.
 Plug 'fatih/vim-go', { 'for': 'go' }
+
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 " Misc
@@ -163,6 +170,7 @@ let g:ale_sign_warning = 'W'
 highlight! def link ALEErrorSign DiffDelete
 
 " https://github.com/fatih/vim-go/issues/2829
+let g:go_gopls_enabled = 0
 let g:go_def_mapping_enabled = 0
 let g:go_highlight_diagnostic_errors = 0
 let g:go_highlight_diagnostic_warnings = 0
