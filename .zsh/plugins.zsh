@@ -1,5 +1,3 @@
-# TODO: experiment between zinit and antigen
-
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…"
     command mkdir -p $HOME/.zinit
@@ -24,6 +22,7 @@ zinit lucid for \
     OMZL::key-bindings.zsh \
     OMZL::theme-and-appearance.zsh \
     OMZP::git/git.plugin.zsh \
+    OMZP::aws/aws.plugin.zsh \
     OMZP::ssh-agent/ssh-agent.plugin.zsh \
     "https://github.com/agkozak/zsh-z/blob/master/zsh-z.plugin.zsh"
 
