@@ -1,0 +1,11 @@
+#!/bin/bash
+rclone sync --dry-run ~/Dropbox/Books dropbox:books
+read -rp "Go ahead with sync (y/n)? " answer
+case ${answer:0:1} in
+    y|Y )
+    rclone sync -P ~/Dropbox/Books dropbox:books
+    ;;
+    * )
+        exit 0
+    ;;
+esac
