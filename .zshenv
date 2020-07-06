@@ -17,6 +17,7 @@ fi
 export PAGER=less
 export LESS='-R'
 
+export PIP_REQUIRE_VIRTUALENV=true
 
 # TODO: move to installation
 export GOPATH=$HOME/.go

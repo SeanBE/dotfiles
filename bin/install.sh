@@ -61,7 +61,8 @@ sudo dnf -y install \
     sqlite sqlite-devel \
     tk-devel \
     chromium \
-    docker-compose
+    docker-compose \
+    libpq-devel
 
 # TODO: clean this part up.
 # install some languages
