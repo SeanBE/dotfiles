@@ -17,13 +17,6 @@ exec swayidle -w \
 # Notification daemon
 exec_always --no-startup-id mako
 
-# Input configuration (swaymsg -t get_inputs)
-input "SynPS/2 Synaptics TouchPad" {
-}
-input "AT Translated Set 2 keyboard" {
-}
-
-# Output (swaymsg -t get_outputs)
 output * bg $background fill
 
 #TODO: https://github.com/davatorium/rofi/issues/97
