@@ -62,7 +62,8 @@ sudo dnf -y install \
     tk-devel \
     chromium \
     docker-compose \
-    libpq-devel
+    libpq-devel \
+    pandoc texlive-scheme-full 
 
 # TODO: clean this part up.
 # install some languages
