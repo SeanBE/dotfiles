@@ -52,7 +52,7 @@ set shortmess+=c  " Don't pass messages to ins-completion-menu.
 nmap Q <Nop>
 
 let mapleader = ","
-"let mapleader="\<Space>"
+let maplocalleader="\<Space>"
 
 " https://github.com/vim/vim/issues/5157
 " https://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim
@@ -109,6 +109,7 @@ let g:coc_global_extensions = [
 \]
 
 Plug 'ekalinin/Dockerfile.vim'
+Plug '~/dev/personal/notez.vim'
 Plug 'godlygeek/tabular' " dep for plasticboy/vim-markdown
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'pangloss/vim-javascript'
@@ -121,6 +122,7 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 " Misc
 Plug 'w0rp/ale'
+Plug 'preservim/nerdtree'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
@@ -226,8 +228,11 @@ function! ToggleNetrw()
   endif
 endfunction
 
-" Add your own mapping. For example:
-noremap <silent> <C-N> :call ToggleNetrw()<CR>
+" notez.vim
+"let g:loaded_notez = 1
+let g:notez_journal_dir="~/.notes/journal"
+
+noremap <silent> <C-n> :NERDTreeToggle<CR>
 
 " Snippets
 let g:UltiSnipsSnippetsDir = '~/.vim/snips/'
