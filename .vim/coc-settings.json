@@ -1,5 +1,6 @@
 {
   "python.jediEnabled": false,
   "rust-analyzer.cargo-watch.enable": false,
-  "coc.preferences.formatOnSaveFiletypes": []
+  "coc.preferences.formatOnSaveFiletypes": [],
+  "tsserver.enableJavascript": false
 }
