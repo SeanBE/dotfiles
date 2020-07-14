@@ -11,6 +11,8 @@ alias ssh='TERM=xterm ssh'
 alias za='zathura --fork'
 alias explore='fzf --preview "bat {-1} --color=always"'
 
+alias newsboat='docker run --rm -it --name newsboat -e XDG_CONFIG_HOME=/home/builder -v /home/sean/.config/newsboat:/home/builder/.newsboat lsemenenko/newsboat:9813f91'
+
 # https://www.topbug.net/blog/2016/10/11/speed-test-check-the-existence-of-a-command-in-bash-and-zsh/
 if (( $+commands[exa] )); then
   alias lss='/bin/ls'

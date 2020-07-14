@@ -1,10 +1,12 @@
-show-read-feeds no
-show-read-articles no
+bind-key m mark-all-above-as-read
 
 bookmark-autopilot yes
 bookmark-cmd "$XDG_CONFIG_HOME/.newsboat/send-to-pocket.sh"
 
 reload-threads 6
+
+show-read-feeds no
+show-read-articles no
 
 # plain colorscheme from contrib
 color listnormal        default default
