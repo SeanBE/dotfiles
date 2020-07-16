@@ -2,15 +2,20 @@ unbind-key -a # unbind currently bound keys
 
 bind-key ^B bookmark
 bind-key e macro-prefix
-bind-key ^R mark-all-above-as-read
+macro u mark-all-above-as-read ;
 macro r mark-feed-read ; next-unread-feed ;
 
 bind-key SPACE open
 bind-key l toggle-show-read-feeds
 bind-key R reload-all
 bind-key q quit
+bind-key Q hard-quit
 bind-key j next
 bind-key k prev
+bind-key t set-tag
+bind-key / open-search
+bind-key ^U pageup
+bind-key ^D pagedown
 
 bookmark-autopilot yes
 bookmark-cmd "~/.newsboat/send-to-pocket.sh"
@@ -19,7 +24,10 @@ include "~/.newsboat/colors"
 include "~/.newsboat/ignore"
 include "~/.newsboat/highlights"
 
+auto-reload yes
+reload-time 30
 reload-threads 6
 
 show-read-feeds no
 show-read-articles no
+show-keymap-hint no 
