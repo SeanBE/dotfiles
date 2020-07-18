@@ -22,6 +22,7 @@ sudo dnf -y install \
     mako \
     grim \
     slurp \
+    restic \
     wf-recorder \
     wl-clipboard \
     screenfetch \
