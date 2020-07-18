@@ -22,3 +22,5 @@ export PIP_REQUIRE_VIRTUALENV=true
 # TODO: move to installation
 export GOPATH=$HOME/.go
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
+
+export NEWSBOAT_SHA=974207a

@@ -11,7 +11,7 @@ alias ssh='TERM=xterm ssh'
 alias za='zathura --fork'
 alias explore='fzf --preview "bat {-1} --color=always"'
 
-alias newsboat='docker run --rm -it --name newsboat -v ~/.newsboat:/home/builder/.newsboat lsemenenko/newsboat:974207a'
+alias newsboat='docker run --rm -it --name newsboat -v ~/.newsboat:/home/builder/.newsboat lsemenenko/newsboat:'"$NEWSBOAT_SHA"
 
 # https://www.topbug.net/blog/2016/10/11/speed-test-check-the-existence-of-a-command-in-bash-and-zsh/
 if (( $+commands[exa] )); then
