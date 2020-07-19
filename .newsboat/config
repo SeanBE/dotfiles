@@ -29,7 +29,7 @@ include "~/.newsboat/ignore"
 include "~/.newsboat/filters"
 include "~/.newsboat/highlights"
 
-auto-reload no
+auto-reload yes
 reload-time 30
 reload-threads 6
 
