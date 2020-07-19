@@ -54,7 +54,11 @@
 
     cfg = config --global -l
     co = checkout
-    cob = checkout -b
+	cob = checkout -b
+
+	# from pro git by scott chacon
+	last = log -1 HEAD
+	unstage = reset HEAD --
 
     s = status -sb
     b = branch -avv
