@@ -1,69 +1,40 @@
-set nocompatible	" makes vim more vi-compatible (off)
-
+" settings {{{
+set nocompatible          " do not make vim vi-compatible
 filetype plugin indent on	" turns on detection plugin and indent
-syntax on 		" basic syntax highlighting
+syntax on 		            " basic syntax highlighting
 
-set hidden
-set confirm
-set modeline
-set wrap
-set wildmenu
+set hidden                " hide buffer instead of unloading
+set confirm               " show confirm dialog instead of failing
+set noerrorbells	        " no beeps for messages
+set modeline              " check lines for set commands
+set modelines=5           " check 5 lines for set commands
 
-set number relativenumber
-set splitright
-set splitbelow
+set noswapfile            " dont store buffer changes into a swap file
+set nobackup              " don't store backup
+set nowritebackup         " don't store temp backup before overwriting
 
-set tabstop=4     " a hard TAB displays as 4 columns
-set shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns
-set softtabstop=4 " insert/delete 4 spaces when hitting a TAB/BACKSPACE
-set expandtab     " insert spaces when hitting TABs
+set number                " show line numbers
+set relativenumber        " show line number relative to line with cursor
+set splitright            " split vertical windows right to the current windows
+set splitbelow            " split horizontal windows below to the current windows
 
-set noswapfile
-set nobackup
+" wildmenu {{{
+set wildmenu              " enhance command line completion
+set wildmode=full         " list all matches + complete first match
 
-set smartindent
-set scrolloff=3
+set wildignore+=*.pyc                            " python byte code
+set wildignore+=.hg,.git,.svn                    " version control
+set wildignore+=go/pkg                           " go static files
+set wildignore+=node_modules                     " js node modules
+set wildignore+=go/bin                           " go bin files
+set wildignore+=*.aux,*.out,*.toc                " latex intermediate files
+set wildignore+=*.pdf,*.jpg,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.sw?                            " vim swap files
+" }}}
 
-set incsearch
-set smartcase
-set ignorecase
-set hlsearch
-nnoremap <C-h> :nohlsearch<cr>
-
-set encoding=utf-8
-set history=1000  	" Keep more history, default is 20
-
-set noerrorbells	" ring bell for messages (off)
-set visualbell
-set t_vb=
-
-set signcolumn=yes
-set clipboard=unnamedplus " unnamed register to the + register
-set wildignore+=.git/**,node_modules/*
-
-" for lightline 
-set noshowmode
-set laststatus=2
-
-" for better coc.nvim experience
-set updatetime=300
-set shortmess+=c  " Don't pass messages to ins-completion-menu.
-
-nmap Q <Nop>
-
-let mapleader = ","
-let maplocalleader="\<Space>"
-
-" https://github.com/vim/vim/issues/5157
-" https://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim
-xnoremap <silent> y y :call system("wl-copy", @")<CR>
-nnoremap <silent> p :let @"=substitute(system("wl-paste --no-newline"), '<C-v><C-m>', '', 'g')<CR>p
-
-" https://vim.fandom.com/wiki/Moving_lines_up_or_down
-nnoremap <C-j> :m .+1<CR>==
-nnoremap <C-k> :m .-2<CR>==
-
-" Undo
+" undo {{{
 if !isdirectory($HOME."/.vim")
     call mkdir($HOME."/.vim", "", 0770)
 endif
@@ -72,7 +43,45 @@ if !isdirectory($HOME."/.vim/undo-dir")
 endif
 set undodir=~/.vim/undo-dir
 set undofile
+" }}}
 
+set conceallevel=0              " do not hide markdown
+set encoding=utf-8              " default encoding utf-8
+set history=1000  	            " keep more history, default is 20
+set backspace=indent,eol,start  " makes backspace key more powerful.
+set signcolumn=yes              " always show sign column to avoid text shfit
+set clipboard=unnamedplus       " unnamed register to the + register
+
+set incsearch                   " shows the match while typing
+set hlsearch                    " highlight found searches
+set ignorecase                  " search case insensitive...
+set smartcase                   " ... but not when search pattern contains upper case characters
+set smartindent                 " smart indentation on new line.
+
+set tabstop=4                   " a hard TAB displays as 4 columns
+set shiftwidth=4                " operation >> indents 4 columns; << unindents 4 columns
+set softtabstop=4               " insert/delete 4 spaces when hitting a TAB/BACKSPACE
+set expandtab                   " insert spaces when hitting TABs
+set shiftround                  " round indent to multiple of shiftwidth
+
+" lightline requires the following
+set noshowmode                  " don't show mode in last line
+set laststatus=2                " last window always has a status line
+
+set nocursorcolumn              " do not highlight screen column of cursor
+set nocursorline                " do not highlight text line of cursor (slows down screen redraw)
+set noshowcmd                   " dont show partial cmd in last line of screen
+
+set scrolloff=5                 " min number of lines to show above/below cursor when scrolling
+set wrap                        " lines longer than textwidth of window will wrap
+set visualbell                  " use visual bell instead of bell
+set t_vb=                       " leave visual bell terminal code empty
+
+set synmaxcol=300               " max num of columns to synax highlight
+set ttyfast                     " indicate fast terminal connection
+" }}}
+
+" Plugins {{{
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -81,11 +90,8 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-" Visuals
+"" Visuals
 Plug 'junegunn/goyo.vim'
-
-let g:goyo_width = "90%"
-let g:goyo_height = "80%"
 
 Plug 'majutsushi/tagbar'
 Plug 'itchyny/lightline.vim'
@@ -93,20 +99,12 @@ Plug 'daviesjamie/vim-base16-lightline'
 Plug 'airblade/vim-gitgutter'
 Plug '~/.local/share/base16-manager/chriskempson/base16-vim'
 
-" Search
+"" Search
 Plug '~/.zinit/plugins/junegunn---fzf'
-"set rtp+=
 Plug 'junegunn/fzf.vim'
 
-" Language
+"" Language
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-let g:coc_global_extensions = [
-    \ 'coc-go',
-    \ 'coc-python',
-    \ 'coc-tsserver',
-    \ 'coc-rust-analyzer'
-\]
 
 Plug 'ekalinin/Dockerfile.vim'
 Plug '~/dev/personal/notez.vim'
@@ -115,12 +113,12 @@ Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 
-" reminder to run GoInstallBinaries on install.
+"" reminder to run GoInstallBinaries on install.
 Plug 'fatih/vim-go', { 'for': 'go' }
 
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
-" Misc
+"" Misc
 Plug 'w0rp/ale'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'justinmk/vim-dirvish'
@@ -133,7 +131,83 @@ Plug 'honza/vim-snippets'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'vim-scripts/L9'	" extra vim utility funcs
 call plug#end()
+" }}}
 
+" mappings {{{
+let mapleader = ","
+let maplocalleader="\<Space>"
+
+" remove search highlight
+nnoremap <Leader>h :nohlsearch<CR>
+
+" disable entering Ex mode
+nnoremap q: <Nop>
+nnoremap Q <Nop>
+
+" faster way of escaping insert mode
+inoremap jk <ESC>
+
+" easier split switching
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
+
+" trim whitespace
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+
+" https://vim.fandom.com/wiki/Moving_lines_up_or_down
+"nnoremap <C-j> :m .+1<CR>==
+"nnoremap <C-k> :m .-2<CR>==
+
+" Some useful quickfix shortcuts
+" map <C-n> :cn<CR>
+" map <C-m> :cp<CR>
+
+" Close quickfix easily
+" nnoremap <leader>a :cclose<CR>
+
+" https://github.com/vim/vim/issues/5157
+" https://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim
+xnoremap <silent> "y y :call system("wl-copy", @")<CR>
+nnoremap <silent> "p :let @"=substitute(system("wl-paste --no-newline"), '<C-v><C-m>', '', 'g')<CR>p
+" }}}
+
+" filetype {{{
+augroup vimrc_help
+  " https://vi.stackexchange.com/a/4464
+  autocmd!
+  autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
+augroup END
+
+au BufNewFile,BufRead .nginx.conf*,nginx.conf* setf nginx
+
+au FileType gitcommit setlocal spell
+au FileType nginx setlocal noet ts=4 sw=4 sts=4
+au FileType gitconfig,sh,toml set noexpandtab
+au FileType text setlocal textwidth=80 fo+=2t ts=2 sw=2 sts=2 expandtab
+au FileType dockerfile set noexpandtab
+" }}}
+
+" notez.vim {{{
+"let g:loaded_notez = 1
+let g:notez_journal_dir="~/.notes/journal"
+" }}}
+
+" colorscheme {{{
+let base16colorspace=256
+source ~/.vim/colorscheme.vim
+let g:lightline = {
+     \ 'colorscheme': 'base16',
+\}
+" }}}
+
+" nerdtree {{{
+let NERDTreeIgnore=['\.vim$', '\~$', '\.git$', '.DS_Store']
+noremap <silent> <C-n> :NERDTreeToggle<CR>
+" }}}
+
+" dirvish {{{
 let g:loaded_netrwPlugin = 1
 command! -nargs=? -complete=dir Explore Dirvish <args>
 command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
@@ -144,22 +218,35 @@ augroup dirvish_config
   autocmd FileType dirvish
               \ nnoremap <silent><buffer> t ddO<Esc>:let @"=substitute(@", '\n', '', 'g')<CR>:r ! find "<C-R>"" -maxdepth 1 -print0 \| xargs -0 ls -Fd<CR>:silent! keeppatterns %s/\/\//\//g<CR>:silent! keeppatterns %s/[^a-zA-Z0-9\/]$//g<CR>:silent! keeppatterns g/^$/d<CR>:noh<CR>
 augroup END
+" }}}}
 
-" Making my vim pretty
-let base16colorspace=256
-source ~/.vim/colorscheme.vim
-let g:lightline = {
-     \ 'colorscheme': 'base16',
-\}
+" goyo {{{
+let g:goyo_width = "90%"
+let g:goyo_height = "80%"
+" }}}
 
-" vim-markdown
+" vim-markdown {{{
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_no_default_key_mappings = 1
 "https://github.com/plasticboy/vim-markdown/issues/126
 let g:vim_markdown_auto_insert_bullets = 1
 let g:vim_markdown_new_list_item_indent = 0
 
-" FZF
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
+" }}}
+
+" vim-go {{{
+" https://github.com/fatih/vim-go/issues/2829
+let g:go_fmt_autosave = 1
+let g:go_gopls_enabled = 0
+let g:go_def_mapping_enabled = 0
+let g:go_highlight_diagnostic_errors = 0
+let g:go_highlight_diagnostic_warnings = 0
+let g:go_highlight_trailing_whitespace_error=0
+" }}}
+
+" fzf {{{
 let g:fzf_preview_window = ''
 
 nmap ; :Buffers<CR>
@@ -168,30 +255,15 @@ nmap <Leader>r :Tags<CR>
 nmap <Leader>s :Snippets<CR>
 nmap <Leader>f :Rg<CR>
 
-" https://github.com/junegunn/fzf.vim/pull/704#issuecomment-450655634 
+" https://github.com/junegunn/fzf.vim/pull/704#issuecomment-450655634
 command! -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>),
   \   1,
   \   {'options': '--delimiter : --nth 2..'})
+" }}}
 
-" Ale
-
-" https://github.com/w0rp/ale#5iv-how-can-i-change-or-disable-the-highlights-ale-uses
-let g:ale_set_highlights = 0
-let g:ale_sign_error = 'E'
-let g:ale_sign_warning = 'W'
-highlight! def link ALEErrorSign DiffDelete
-
-" https://github.com/fatih/vim-go/issues/2829
-let g:go_gopls_enabled = 0
-let g:go_def_mapping_enabled = 0
-let g:go_highlight_diagnostic_errors = 0
-let g:go_highlight_diagnostic_warnings = 0
-let g:go_highlight_trailing_whitespace_error=0
-
-let g:ale_go_golangci_lint_options = ''
-
+" ale {{{
 let g:ale_fixers = {
 \   'sh': ['remove_trailing_lines', 'shfmt', 'trim_whitespace'],
 \   'python': ['black'],
@@ -201,7 +273,6 @@ let g:ale_fixers = {
 \   'go': ['gofmt', 'goimports', 'remove_trailing_lines', 'trim_whitespace']
 \}
 
-
 let g:ale_linters = {
 \   'sh': ['language_server', 'shell', 'shellcheck'],
 \   'rust': ['cargo', 'rls'],
@@ -210,17 +281,41 @@ let g:ale_linters = {
 \   'javascript': ['eslint', 'prettier']
 \}
 
+" https://github.com/w0rp/ale#5iv-how-can-i-change-or-disable-the-highlights-ale-uses
+let g:ale_set_highlights = 0
+let g:ale_sign_error = 'E'
+let g:ale_sign_warning = 'W'
+highlight! def link ALEErrorSign DiffDelete
+
+let g:ale_go_golangci_lint_options = ''
+
 " https://github.com/rust-lang/rfcs/pull/2912
 let g:ale_rust_rls_toolchain = ''
 let g:ale_rust_rls_executable = 'rust-analyzer'
 
 let g:ale_python_black_options = '-S' " skip string normalization
+" }}}
 
-"" Netrw
+" coc.nvim {{{
+set cmdheight=1           " number of screen lines to give command line
+set updatetime=300        " better user experience. default is 400ms
+set shortmess+=c          " don't pass messages to ins-completion-menu.
+
+let g:coc_global_extensions = [
+    \ 'coc-go',
+    \ 'coc-python',
+    \ 'coc-tsserver',
+    \ 'coc-rust-analyzer'
+\]
+
+" }}}
+
+" netrw {{{
 let g:netrw_banner = 0
 let g:netrw_winsize = 15
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
+let g:netrw_dirhistmax=0
 
 " https://www.reddit.com/r/vim/comments/6jcyfj/toggle_lexplore_properly/djdmsal?utm_source=share&utm_medium=web2x
 let g:NetrwIsOpen=0
@@ -239,13 +334,15 @@ function! ToggleNetrw()
     silent Lexplore
   endif
 endfunction
+" }}}
 
-" notez.vim
-"let g:loaded_notez = 1
-let g:notez_journal_dir="~/.notes/journal"
-
-noremap <silent> <C-n> :NERDTreeToggle<CR>
-
-" Snippets
+" snippets {{{
 let g:UltiSnipsSnippetsDir = '~/.vim/snips/'
 let g:UltiSnipsSnippetDirectories=[$HOME."/.vim/snips", "UltiSnips"]
+" }}}
+
+" gitgutter {{{
+let g:gitgutter_map_keys = 0
+" }}}
+
+" vim:ts=2:sw=2:sts=2:fdm=marker:foldlevel=0:et
