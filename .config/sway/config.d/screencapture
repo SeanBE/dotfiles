@@ -1,0 +1,2 @@
+bindsym $mod+Print exec grim ~/Downloads/$(date +'screengrab_%Y%m%d-%H%M%S.png')    
+bindsym $mod+Shift+Print exec grim -g "$(slurp)" ~/Downloads/$(date +'screengrab_%Y%m%d-%H%M%S.png')    
