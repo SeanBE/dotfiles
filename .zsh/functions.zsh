@@ -1,6 +1,7 @@
 myIp() {
-  ifconfig lo | grep 'inet ' | sed -e 's/:/ /' | awk '{print "lo0       : " $2}'
-	ifconfig wlp4s0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en0 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
+  curl ifconfig.me
+  echo "\n"
+  hostname -I | awk '{print $1}'
 }
 
 isTmux() {
