@@ -114,8 +114,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'ekalinin/Dockerfile.vim'
 Plug '~/dev/personal/notez.vim'
-Plug 'godlygeek/tabular' " dep for plasticboy/vim-markdown
-Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 
@@ -127,7 +125,6 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 "" Misc
 Plug 'w0rp/ale'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'justinmk/vim-dirvish'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
@@ -204,37 +201,13 @@ let g:lightline = {
 " }}}
 
 " nerdtree {{{
-let NERDTreeIgnore=['\.vim$', '\~$', '\.git$', '.DS_Store']
+let NERDTreeIgnore=['\~$', '\.git$', '.DS_Store']
 noremap <silent> <C-n> :NERDTreeToggle<CR>
 " }}}
-
-" dirvish {{{
-let g:loaded_netrwPlugin = 1
-command! -nargs=? -complete=dir Explore Dirvish <args>
-command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
-command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
-
-augroup dirvish_config
-  autocmd!
-  autocmd FileType dirvish
-              \ nnoremap <silent><buffer> t ddO<Esc>:let @"=substitute(@", '\n', '', 'g')<CR>:r ! find "<C-R>"" -maxdepth 1 -print0 \| xargs -0 ls -Fd<CR>:silent! keeppatterns %s/\/\//\//g<CR>:silent! keeppatterns %s/[^a-zA-Z0-9\/]$//g<CR>:silent! keeppatterns g/^$/d<CR>:noh<CR>
-augroup END
-" }}}}
 
 " goyo {{{
 let g:goyo_width = "90%"
 let g:goyo_height = "80%"
-" }}}
-
-" vim-markdown {{{
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_no_default_key_mappings = 1
-"https://github.com/plasticboy/vim-markdown/issues/126
-let g:vim_markdown_auto_insert_bullets = 1
-let g:vim_markdown_new_list_item_indent = 0
-
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_conceal_code_blocks = 0
 " }}}
 
 " vim-go {{{
@@ -348,6 +321,23 @@ let g:UltiSnipsSnippetDirectories=[$HOME."/.vim/snips", "UltiSnips"]
 
 " gitgutter {{{
 let g:gitgutter_map_keys = 0
+" }}}
+
+" white space highlight {{{
+"highlight RedundantWhitespace ctermbg=green guibg=green
+"match RedundantWhitespace /\s\+$\| \+\ze\t/
+" }}}
+
+" spell check {{{{
+set spelllang=en
+highlight clear SpellBad
+highlight SpellBad term=standout cterm=underline ctermfg=red
+highlight clear SpellCap
+highlight SpellCap term=underline cterm=underline
+highlight clear SpellRare
+highlight SpellRare term=underline cterm=underline
+highlight clear SpellLocal
+highlight SpellLocal term=underline cterm=underline
 " }}}
 
 " vim:ts=2:sw=2:sts=2:fdm=marker:foldlevel=0:et
