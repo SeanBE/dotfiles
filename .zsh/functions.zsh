@@ -30,6 +30,10 @@ sqlformat() {
         echo "\n" && python -c 'import sqlparse; print(sqlparse.format("""'$1'""", reindent=True, keyword_case="upper"))'
 }
 
+docker-labels() {
+    docker inspect --format '{{ json .Config.Labels }}' $1 | jq 
+}
+
 headphonesOn() {
         if ! pactl list sinks short | grep bluez >/dev/null;
         then
