@@ -75,7 +75,7 @@
     save = "!git add -u; git commit -m \"Saving Work in Progress\""
 
     # Prune stale remote links to origin
-    prune-origin = git remote prune origin
+    prune-origin = remote prune origin
 
     # Undo previous commit and leave commit files in working tree
     undo = reset HEAD~ --mixed
