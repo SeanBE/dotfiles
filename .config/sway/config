@@ -5,9 +5,11 @@ set $down j
 set $up k
 set $right l
 set $term alacritty
-set $background /usr/share/backgrounds/fedora-workstation/himalayan-desert-mountains.jpg
 
-# Idle configuration #TODO: test this later
+set $background /usr/share/backgrounds/fedora-workstation/himalayan-desert-mountains.jpg
+output * bg $background fill
+
+# Idle configuration
 exec swayidle -w \
     timeout 300 'swaylock -f -i $background' \
     timeout 600 'swaymsg "output * dpms off"' \
@@ -16,11 +18,6 @@ exec swayidle -w \
 
 # Notification daemon
 exec_always --no-startup-id mako
-
-output * bg $background fill
-
-#TODO: https://github.com/davatorium/rofi/issues/97
-#exec rofi -rnow -run-command "bash -i -c '{cmd}'"
 
 ### Key bindings
 bindsym $mod+m exec --no-startup-id SUDO_ASKPASS=~/bin/askpassrofi.sh ~/bin/mountmenu
