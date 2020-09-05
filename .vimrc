@@ -328,16 +328,4 @@ let g:gitgutter_map_keys = 0
 "match RedundantWhitespace /\s\+$\| \+\ze\t/
 " }}}
 
-" spell check {{{{
-set spelllang=en
-highlight clear SpellBad
-highlight SpellBad term=standout cterm=underline ctermfg=red
-highlight clear SpellCap
-highlight SpellCap term=underline cterm=underline
-highlight clear SpellRare
-highlight SpellRare term=underline cterm=underline
-highlight clear SpellLocal
-highlight SpellLocal term=underline cterm=underline
-" }}}
-
 " vim:ts=2:sw=2:sts=2:fdm=marker:foldlevel=0:et
