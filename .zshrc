@@ -17,7 +17,7 @@ export PATH="$HOME/bin:$PATH"
 export PATH="/opt/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
-source $HOME/.functions
+source $HOME/.zsh/functions.zsh
 
 umask 0002  # setting umask here since its being set to 0077 somewhere...
 setopt noflowcontrol; stty -ixon

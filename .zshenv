@@ -26,3 +26,7 @@ export NEWSBOAT_SHA=974207a
 
 export CLUTTER_BACKEND=wayland
 export GDK_BACKEND=wayland
+
+export IPYTHONDIR=~/.ipython
+
+export LEDGER_FILE=~/.ledger/all.journal
