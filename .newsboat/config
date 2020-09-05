@@ -1,10 +1,11 @@
 unbind-key -a # unbind currently bound keys
-
+ 
 bind-key ^B bookmark
 bind-key e macro-prefix
 macro u mark-all-above-as-read ;
 macro r mark-feed-read ; next-unread-feed ;
 
+bind-key : cmdline
 bind-key SPACE open
 bind-key l toggle-show-read-feeds
 bind-key R reload-all
@@ -18,10 +19,13 @@ bind-key ^U pageup
 bind-key ^D pagedown
 bind-key f select-filter
 bind-key ^N toggle-article-read
+bind-key UP up
+bind-key DOWN down
 
 articlelist-title-format "Feed '%T' (%u unread)%?F? matching filter `%F'&? - %U"
 
 bookmark-autopilot yes
+bookmark-interactive no
 bookmark-cmd "~/.newsboat/send-to-pocket.sh"
 
 include "~/.newsboat/colors"
@@ -30,9 +34,16 @@ include "~/.newsboat/filters"
 include "~/.newsboat/highlights"
 
 auto-reload yes
+suppress-first-reload yes
 reload-time 30
 reload-threads 6
+download-retries 3
 
+cleanup-on-quit no
+
+goto-next-feed no
 show-read-feeds no
 show-read-articles no
 show-keymap-hint no 
+feed-sort-order unreadarticlecount
+prepopulate-query-feeds yes
