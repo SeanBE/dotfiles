@@ -79,6 +79,12 @@ set t_vb=                       " leave visual bell terminal code empty
 
 set synmaxcol=300               " max num of columns to synax highlight
 set ttyfast                     " indicate fast terminal connection
+
+" Make :grep use ripgrep
+if executable('rg')
+    set grepprg=rg\ --color=never\ --vimgrep
+endif
+
 " }}}
 
 " Plugins {{{
@@ -156,14 +162,9 @@ nnoremap <C-l> <C-W>l
 " trim whitespace
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
-" https://vim.fandom.com/wiki/Moving_lines_up_or_down
-"nnoremap <C-j> :m .+1<CR>==
-"nnoremap <C-k> :m .-2<CR>==
-
 " Some useful quickfix shortcuts
 " map <C-n> :cn<CR>
 " map <C-m> :cp<CR>
-
 " Close quickfix easily
 " nnoremap <leader>a :cclose<CR>
 
@@ -191,7 +192,7 @@ au FileType dockerfile set noexpandtab
 
 " notez.vim {{{
 "let g:loaded_notez = 1
-let g:notez_journal_dir="~/.notes/journal"
+let g:notez_dir="~/.notes"
 " }}}
 
 " colorscheme {{{
@@ -247,7 +248,9 @@ let g:go_highlight_trailing_whitespace_error=0
 " }}}
 
 " fzf {{{
+" disable preview window altogether unless explicit
 let g:fzf_preview_window = ''
+let g:fzf_preview_command = 'bat --color=always'
 
 nmap ; :Buffers<CR>
 nmap <Leader>t :Files<CR>
@@ -276,7 +279,7 @@ let g:ale_fixers = {
 let g:ale_linters = {
 \   'sh': ['language_server', 'shell', 'shellcheck'],
 \   'rust': ['cargo', 'rls'],
-\   'python': ['pylint', 'flake8', 'mypy'],
+\   'python': ['flake8', 'mypy'],
 \   'go': ['golangci-lint', 'gobuild'],
 \   'javascript': ['eslint', 'prettier']
 \}
@@ -307,6 +310,8 @@ let g:coc_global_extensions = [
     \ 'coc-tsserver',
     \ 'coc-rust-analyzer'
 \]
+
+autocmd FileType markdown let b:coc_suggest_disable = 1
 
 " }}}
 
