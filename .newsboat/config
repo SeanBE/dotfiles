@@ -2,13 +2,14 @@ unbind-key -a # unbind currently bound keys
  
 bind-key ^B bookmark
 bind-key e macro-prefix
+macro r reload;
+macro R reload-all;
 macro u mark-all-above-as-read ;
 macro r mark-feed-read ; next-unread-feed ;
 
 bind-key : cmdline
 bind-key SPACE open
 bind-key l toggle-show-read-feeds
-bind-key R reload-all
 bind-key q quit
 bind-key Q hard-quit
 bind-key j next
