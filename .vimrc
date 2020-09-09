@@ -18,6 +18,11 @@ set relativenumber        " show line number relative to line with cursor
 set splitright            " split vertical windows right to the current windows
 set splitbelow            " split horizontal windows below to the current windows
 
+if has("mouse_sgr")
+  set mouse=a
+	set ttymouse=sgr
+end
+
 " wildmenu {{{
 set wildmenu              " enhance command line completion
 set wildmode=full         " list all matches + complete first match
