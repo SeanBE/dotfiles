@@ -10,6 +10,7 @@ alias pip='python -m pip'
 alias ssh='TERM=xterm ssh'
 alias za='zathura --fork'
 alias explore='fzf --preview "bat {-1} --color=always"'
+alias hledger="docker run --rm -it --user $(id -u):$(id -g) -v $(pwd):/full-fledged-hledger:z dastapov/full-fledged-hledger:latest"
 
 # https://www.topbug.net/blog/2016/10/11/speed-test-check-the-existence-of-a-command-in-bash-and-zsh/
 if (( $+commands[exa] )); then
