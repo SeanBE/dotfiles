@@ -81,7 +81,7 @@ bindsym $mod+Shift+5 move container to workspace 5
 # bindsym $mod+grave  [title="^sp$"] scratchpad show
 
 # Switch the current container between splits
-bindsym $mod+e layout toggle split
+bindsym $mod+e layout toggle tabbed split
 
 # Make the current focus fullscreen
 bindsym $mod+f fullscreen
@@ -141,9 +141,10 @@ client.urgent           $base08 $base08 $base00 $base08 $base08
 client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background       $base07
 
+# hide top bar
 font pango:monospace 0
-titlebar_border_thickness 0
-titlebar_padding 0
+titlebar_border_thickness 1
+titlebar_padding 1
 
 bar {
     position top
