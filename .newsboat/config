@@ -39,6 +39,7 @@ suppress-first-reload yes
 reload-time 30
 reload-threads 6
 download-retries 3
+keep-articles-days 30
 
 cleanup-on-quit no
 
