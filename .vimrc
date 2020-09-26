@@ -228,7 +228,6 @@ let g:go_highlight_trailing_whitespace_error=0
 " fzf {{{
 " disable preview window altogether unless explicit
 let g:fzf_preview_window = ''
-let g:fzf_preview_command = 'bat --color=always'
 
 nmap ; :Buffers<CR>
 nmap <Leader>t :Files<CR>
