@@ -126,6 +126,10 @@ bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym --locked XF86MonBrightnessUp exec light -A 5
 bindsym --locked XF86MonBrightnessDown exec light -U 5
 
+
+for_window [class="vlc"] floating enable
+for_window [class="vlc"] inhibit_idle fullscreen
+
 # Base16 configuration
 include colorscheme
 
