@@ -247,6 +247,7 @@ command! -nargs=* Rg
 let g:ale_fixers = {
 \   'sh': ['remove_trailing_lines', 'shfmt', 'trim_whitespace'],
 \   'python': ['black'],
+\   'sql': ['pgformatter'],
 \   'rust': ['remove_trailing_lines', 'rustfmt', 'trim_whitespace'],
 \   'javascript': ['eslint', 'prettier'],
 \   'vim': ['remove_trailing_lines', 'trim_whitespace'],
