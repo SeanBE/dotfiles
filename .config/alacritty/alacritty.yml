@@ -6,7 +6,7 @@ window:
 scrolling:
   history: 10000
 
-visual_bell:
+bell:
   duration: 0
 
 shell:
@@ -39,3 +39,5 @@ key_bindings:
   - { key: Add,      mods: Control,       action: IncreaseFontSize }
   - { key: Key0,     mods: Control,       action: ResetFontSize    }
   - { key: Subtract, mods: Control,       action: DecreaseFontSize }
+    #  - { key: Space,    mods: Control|Shift, action: ToggleViMode     }
+    #  - { key: Slash,    mods: Control|Shift, action: SearchBackward   }
