@@ -62,6 +62,8 @@
 
 	count = !git --no-pager log --oneline | wc -l
 
+	pushf = push --force-with-lease
+
 	# from pro git by scott chacon
 	last = log -1 HEAD
 	unstage = reset HEAD --
