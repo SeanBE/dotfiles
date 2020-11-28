@@ -42,6 +42,7 @@
 \set VERBOSITY verbose
 
 \setenv PAGER 'less -S'
+\setenv PSQL_EDITOR "/usr/bin/vimx"
 
 \ir .psql/.psqlrc-:HOST-:DBNAME
 
