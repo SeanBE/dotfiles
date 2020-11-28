@@ -86,9 +86,6 @@ bindsym $mod+e layout toggle tabbed split
 # Make the current focus fullscreen
 bindsym $mod+f fullscreen
 
-# Toggle the current focus between tiling and floating mode
-bindsym $mod+Shift+space floating toggle
-
 # Move focus to the parent container
 bindsym $mod+a focus parent
 
