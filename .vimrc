@@ -206,7 +206,7 @@ let g:lightline = {
 " }}}
 
 " nerdtree {{{
-let NERDTreeIgnore=['\~$', '\.git$', '.DS_Store']
+let NERDTreeIgnore=['\~$', '\.git$', '\.pyc$', '\.egg-info$', '__pycache__', '__pycache__']
 let NERDTreeMinimalUI = 1
 noremap <silent> <C-n> :NERDTreeToggle<CR>
 " }}}
