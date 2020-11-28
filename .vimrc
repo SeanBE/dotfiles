@@ -207,6 +207,7 @@ let g:lightline = {
 
 " nerdtree {{{
 let NERDTreeIgnore=['\~$', '\.git$', '.DS_Store']
+let NERDTreeMinimalUI = 1
 noremap <silent> <C-n> :NERDTreeToggle<CR>
 " }}}
 
@@ -246,7 +247,7 @@ command! -nargs=* Rg
 " ale {{{
 let g:ale_fixers = {
 \   'sh': ['remove_trailing_lines', 'shfmt', 'trim_whitespace'],
-\   'python': ['black'],
+\   'python': ['black', 'isort'],
 \   'sql': ['pgformatter'],
 \   'rust': ['remove_trailing_lines', 'rustfmt', 'trim_whitespace'],
 \   'javascript': ['eslint', 'prettier'],
@@ -262,6 +263,7 @@ let g:ale_linters = {
 \   'javascript': ['eslint', 'prettier']
 \}
 
+let g:ale_disable_lsp = 1
 " https://github.com/w0rp/ale#5iv-how-can-i-change-or-disable-the-highlights-ale-uses
 let g:ale_set_highlights = 0
 let g:ale_sign_error = 'E'
