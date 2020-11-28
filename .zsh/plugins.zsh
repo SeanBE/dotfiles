@@ -62,6 +62,11 @@ zinit ice cloneonly nocompile nocompletions \
     ln -sf ${ZINIT[PLUGINS_DIR]}/pyenv---pyenv-virtualenv $PYENV_ROOT/plugins/pyenv-virtualenv"
 zinit light pyenv/pyenv-virtualenv
 
+zplugin ice as"completion" atclone"python ./get-poetry.py; \
+    $HOME/.poetry/bin/poetry completions zsh > _poetry" \
+    atpull"%atclone" atload'PATH+=:$HOME/.poetry/bin'
+zplugin light python-poetry/poetry
+
 zinit light zsh-users/zsh-history-substring-search
 
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
