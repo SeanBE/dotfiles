@@ -284,6 +284,12 @@ set cmdheight=1           " number of screen lines to give command line
 set updatetime=300        " better user experience. default is 400ms
 set shortmess+=c          " don't pass messages to ins-completion-menu.
 
+
+" coc python errors are because of:
+" https://github.com/neoclide/coc-python/blob/master/src/interpreter/locators/services/currentPathService.ts#L56
+" goes through all the suggestions (python3.7/3.6 etc) where pyenv will complain
+" using coc with python just make sure to set the current interpreter.
+" this preference is saved to coc/memos.json
 let $NVIM_COC_LOG_LEVEL='error'
 let $NVIM_COC_LOG_FILE='/tmp/coc-vim.log'
 
