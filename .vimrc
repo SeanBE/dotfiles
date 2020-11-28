@@ -284,6 +284,9 @@ set cmdheight=1           " number of screen lines to give command line
 set updatetime=300        " better user experience. default is 400ms
 set shortmess+=c          " don't pass messages to ins-completion-menu.
 
+let $NVIM_COC_LOG_LEVEL='error'
+let $NVIM_COC_LOG_FILE='/tmp/coc-vim.log'
+
 let g:coc_global_extensions = [
     \ 'coc-go',
     \ 'coc-python',
