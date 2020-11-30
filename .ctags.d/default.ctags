@@ -5,6 +5,7 @@
 --exclude=build
 --exclude=vendor
 --exclude=node_modules
+--exclude=.mypy_cache
 
 --recurse=yes
 --tag-relative=yes
