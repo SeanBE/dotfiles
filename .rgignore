@@ -2,3 +2,6 @@
 .cache
 *.npy
 __pycache__
+nltk_data
+node_modules
+.mypy_cache

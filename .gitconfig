@@ -1,6 +1,7 @@
 [init]
     templatedir = ~/.git_templates
 [core]
+	editor = /usr/bin/vimx
     excludesfile = ~/.gitignore.global
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 	pager = delta --theme 'base16' #--theme 'Solarized (light)'
