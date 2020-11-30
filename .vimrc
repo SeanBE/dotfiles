@@ -186,7 +186,6 @@ augroup END
 au BufNewFile,BufRead .nginx.conf*,nginx.conf* setf nginx
 
 au FileType gitcommit setlocal spell
-au FileType nginx setlocal noet ts=4 sw=4 sts=4
 au FileType gitconfig,sh,toml set noexpandtab
 au FileType text setlocal textwidth=80 fo+=2t ts=2 sw=2 sts=2 expandtab
 au FileType dockerfile set noexpandtab
