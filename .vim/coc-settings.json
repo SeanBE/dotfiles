@@ -1,8 +1,5 @@
 {
-  "python.jediEnabled": true,
-  "python.jediPath": "~/.zinit/plugins/pyenv---pyenv/versions/3.8.3/lib/python3.8/site-packages/",
   "python.linting.enabled": false,
-  "python.venvPath": "~/.pyenv/",
   "diagnostic.displayByAle": true,
   "coc.preferences.formatOnSaveFiletypes": [],
   "rust-analyzer.cargo-watch.enable": false,

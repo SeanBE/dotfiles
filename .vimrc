@@ -294,7 +294,7 @@ let $NVIM_COC_LOG_FILE='/tmp/coc-vim.log'
 
 let g:coc_global_extensions = [
     \ 'coc-go',
-    \ 'coc-python',
+    \ 'coc-pyright',
     \ 'coc-tsserver',
     \ 'coc-rust-analyzer'
 \]
