@@ -269,6 +269,9 @@ let g:ale_sign_error = 'E'
 let g:ale_sign_warning = 'W'
 highlight! def link ALEErrorSign DiffDelete
 
+let g:ale_set_loclist = 1
+let g:ale_set_quickfix = 0
+
 let g:ale_go_golangci_lint_options = ''
 
 " https://github.com/rust-lang/rfcs/pull/2912
