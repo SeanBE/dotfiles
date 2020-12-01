@@ -32,17 +32,20 @@ zinit snippet 'https://github.com/docker/cli/blob/master/contrib/completion/zsh/
 zinit ice as"completion"
 zinit snippet 'https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose'
 
-# FZF
-export FZF_DEFAULT_OPTS="--height 20% --color=16"
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
-
-## https://github.com/junegunn/fzf/issues/1437
-zinit ice from"gh-r" as"program" 
-zinit light junegunn/fzf-bin
-zinit ice multisrc"shell/{key-bindings,completion}.zsh" pick""
+# need to clone (releases only includes binary)
+zinit ice as"program" pick"$ZPFX/bin/fzf" \
+  atclone"mkdir -p $ZPFX/{bin,man/man1}; cp bin/fzf $ZPFX/bin/; \
+  cp man/man1/fzf.1 $ZPFX/man/man1/fzf.1; cp bin/fzf-tmux $ZPFX/bin; \
+  cp shell/completion.zsh _fzf_completion; cp shell/key-bindings.zsh key-bindings.zsh" \
+  atpull"%atclone" nocompile"" make"!PREFIX=$ZPFX install"
 zinit light junegunn/fzf
+
+type fzf &> /dev/null && {
+    export FZF_DEFAULT_OPTS="--height 20% --color=16"
+    export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+}
 
 export NVM_LAZY_LOAD=true
 export NVM_DIR="$HOME/.config/nvm"
