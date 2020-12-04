@@ -8,6 +8,10 @@ source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
+type zinit &> /dev/null && {
+  mkdir -p $ZPFX/{bin,man/man1,share}
+}
+
 zstyle :omz:plugins:ssh-agent lifetime 4h
 zstyle :omz:plugins:ssh-agent identities "" # force no ssh-keys loading at startup
 
@@ -37,10 +41,10 @@ zinit snippet 'https://github.com/docker/compose/blob/master/contrib/completion/
 
 # need to clone (releases only includes binary)
 zinit ice as"program" pick"$ZPFX/bin/fzf" \
-  atclone"mkdir -p $ZPFX/{bin,man/man1}; cp bin/fzf $ZPFX/bin/; \
+  atclone"cp bin/fzf $ZPFX/bin/; \
   cp man/man1/fzf.1 $ZPFX/man/man1/fzf.1; cp bin/fzf-tmux $ZPFX/bin; \
   cp shell/completion.zsh _fzf_completion; cp shell/key-bindings.zsh key-bindings.zsh" \
-  atpull"%atclone" nocompile"" make"!PREFIX=$ZPFX install"
+  atpull"%atclone" nocompile"" make"!PREFIX=$ZPFX install" src="key-bindings.zsh"
 zinit light junegunn/fzf
 
 type fzf &> /dev/null && {
