@@ -1,7 +1,9 @@
 {
+  "pyright.disableOrganizeImports": true,
   "python.linting.enabled": false,
   "diagnostic.displayByAle": true,
   "coc.preferences.formatOnSaveFiletypes": [],
+  "coc.preferences.jumpCommand": "vsplit",
   "rust-analyzer.cargo-watch.enable": false,
   "tsserver.enableJavascript": false
 }
