@@ -8,6 +8,7 @@ tags
 __pycache__
 .mypy_cache
 .python-version
+pyrightconfig.json
 
 # Compiled source #
 ###################
