@@ -1,0 +1,7 @@
+snippet psycho "psycopg2 context manager" b
+with psycopg2.connect(${1:connection}) as conn:
+	with conn.cursor() as curs:
+		curs.execute("""
+			${2:query}
+		""")
+endsnippet

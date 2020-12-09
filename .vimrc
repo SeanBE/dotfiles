@@ -135,6 +135,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'SirVer/ultisnips'
+" no snippets provided in ultisnips engine.
 Plug 'honza/vim-snippets'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'vim-scripts/L9'	" extra vim utility funcs
@@ -335,6 +336,9 @@ endfunction
 " snippets {{{
 let g:UltiSnipsSnippetsDir = '~/.vim/snips/'
 let g:UltiSnipsSnippetDirectories=[$HOME."/.vim/snips", "UltiSnips"]
+
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 " }}}
 
 " gitgutter {{{
