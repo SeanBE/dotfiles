@@ -209,6 +209,11 @@ let g:lightline = {
 let NERDTreeIgnore=['\~$', '\.git$', '\.pyc$', '\.egg-info$', '__pycache__', '__pycache__']
 let NERDTreeMinimalUI = 1
 noremap <silent> <C-n> :NERDTreeToggle<CR>
+
+let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeDirArrowCollapsible = ''
+
+highlight VertSplit ctermbg=NONE
 " }}}
 
 " goyo {{{
@@ -228,7 +233,9 @@ let g:go_highlight_trailing_whitespace_error=0
 
 " fzf {{{
 " disable preview window altogether unless explicit
-let g:fzf_preview_window = ''
+let g:fzf_preview_window = []
+
+let g:fzf_layout = { 'down': '30%' }
 
 nmap ; :Buffers<CR>
 nmap <Leader>t :Files<CR>
@@ -245,12 +252,17 @@ command! -nargs=* Rg
 " }}}
 
 " ale {{{
+" TODO: these aliases dont work?
+let g:ale_linter_aliases = {'javascript': ['typescriptreact', 'typescript']}
+
 let g:ale_fixers = {
 \   'sh': ['remove_trailing_lines', 'shfmt', 'trim_whitespace'],
 \   'python': ['black', 'isort'],
 \   'sql': ['pgformatter'],
 \   'rust': ['remove_trailing_lines', 'rustfmt', 'trim_whitespace'],
 \   'javascript': ['eslint', 'prettier'],
+\   'typescriptreact': ['prettier'],
+\   'typescript': ['prettier'],
 \   'vim': ['remove_trailing_lines', 'trim_whitespace'],
 \   'go': ['gofmt', 'goimports', 'remove_trailing_lines', 'trim_whitespace']
 \}
@@ -260,7 +272,9 @@ let g:ale_linters = {
 \   'rust': ['cargo', 'rls'],
 \   'python': ['flake8', 'mypy'],
 \   'go': ['golangci-lint', 'gobuild'],
-\   'javascript': ['eslint', 'prettier']
+\   'javascript': ['eslint', 'prettier'],
+\   'typescriptreact': ['eslint'],
+\   'typescript': ['eslint']
 \}
 
 let g:ale_disable_lsp = 1
@@ -268,7 +282,12 @@ let g:ale_disable_lsp = 1
 let g:ale_set_highlights = 0
 let g:ale_sign_error = 'E'
 let g:ale_sign_warning = 'W'
-highlight! def link ALEErrorSign DiffDelete
+
+highlight ALEErrorSign ctermfg=red ctermbg=black
+highlight ALEStyleErrorSign ctermfg=yellow ctermbg=black
+
+highlight clear SignColumn
+highlight clear LineNr
 
 let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
@@ -287,7 +306,6 @@ set cmdheight=1           " number of screen lines to give command line
 set updatetime=300        " better user experience. default is 400ms
 set shortmess+=c          " don't pass messages to ins-completion-menu.
 
-
 " coc python errors are because of:
 " https://github.com/neoclide/coc-python/blob/master/src/interpreter/locators/services/currentPathService.ts#L56
 " goes through all the suggestions (python3.7/3.6 etc) where pyenv will complain
@@ -295,6 +313,12 @@ set shortmess+=c          " don't pass messages to ins-completion-menu.
 " this preference is saved to coc/memos.json
 let $NVIM_COC_LOG_LEVEL='error'
 let $NVIM_COC_LOG_FILE='/tmp/coc-vim.log'
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gt <Plug>(coc-type-definition)
+
+nmap <leader>u <Plug>(coc-references)
 
 let g:coc_global_extensions = [
     \ 'coc-go',
@@ -343,6 +367,9 @@ let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 
 " gitgutter {{{
 let g:gitgutter_map_keys = 0
+highlight clear GitGutterAdd
+highlight clear GitGutterDelete
+highlight clear GitGutterChange
 " }}}
 
 " white space highlight {{{
