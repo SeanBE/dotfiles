@@ -28,3 +28,7 @@ if (( $+commands[htop] )); then
   alias top='htop'
 fi
 
+
+if (( $+commands[fd] )); then
+  alias find='fd --color=auto --hidden'
+fi
