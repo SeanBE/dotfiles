@@ -2,8 +2,8 @@ unbind-key -a # unbind currently bound keys
  
 bind-key ^B bookmark
 bind-key e macro-prefix
-macro r reload;
-macro R reload-all;
+macro R reload;
+macro A reload-all;
 macro u mark-all-above-as-read ;
 macro r mark-feed-read ; next-unread-feed ;
 
