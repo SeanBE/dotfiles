@@ -30,6 +30,21 @@ zinit lucid for \
     OMZP::ssh-agent/ssh-agent.plugin.zsh \
     "https://github.com/agkozak/zsh-z/blob/master/zsh-z.plugin.zsh"
 
+
+# https://github.com/andersoncardoso/pyenv-autoenv
+function _autoenv_activate() {
+    if [ -e ".python-version" ]; then
+        pyenv deactivate > /dev/null 2>&1
+        pyenv activate
+    elif [ ! -z "${PYENV_VIRTUAL_ENV}" ]; then
+        pyenv deactivate
+    fi
+}
+
+function chpwd() {
+    _autoenv_activate
+}
+
 zinit light zinit-zsh/z-a-bin-gem-node
 zinit light zinit-zsh/z-a-patch-dl
 
