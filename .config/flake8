@@ -3,5 +3,4 @@
 # H306: imports not in alphabetical order (time, os)
 # W503: Line break occurred before a binary operator
 ignore = W503,H306,H101
-exclude = test_*.py
 max-line-length = 88
