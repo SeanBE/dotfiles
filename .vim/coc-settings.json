@@ -12,5 +12,6 @@
   "coc.preferences.formatOnSaveFiletypes": [],
   "coc.preferences.jumpCommand": "vsplit",
   "rust-analyzer.cargo-watch.enable": false,
-  "tsserver.enableJavascript": false
+  "tsserver.enableJavascript": false,
+  "tsserver.log": "verbose"
 }
