@@ -1,4 +1,8 @@
 #zmodload zsh/zprof
+
+# TODO: where should this go??
+fpath+=$HOME/.zsh/functions
+
 source $HOME/.zsh/theme.zsh
 source $HOME/.zsh/plugins.zsh
 

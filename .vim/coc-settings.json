@@ -1,4 +1,5 @@
 {
+  "diagnostic.level": "information",
   "diagnostic.displayByAle": true,
   "diagnostic.virtualTextCurrentLineOnly": true,
   "diagnostic.messageTarget": "echo",
