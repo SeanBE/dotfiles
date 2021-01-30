@@ -69,12 +69,9 @@ type fzf &> /dev/null && {
     export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 }
 
-export NVM_LAZY_LOAD=true
-export NVM_DIR="$HOME/.config/nvm"
-export NVM_SYMLINK_CURRENT=true # nvm use should make a symlink
-zinit light lukechilds/zsh-nvm
-## https://github.com/nvm-sh/nvm/issues/1277#issuecomment-536218082
-export PATH="$NVM_DIR/versions/node/v$(<$NVM_DIR/alias/default)/bin:$PATH"
+# TODO: setup volta with zinit (curl https://get.volta.sh | bash)
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 
 zinit ice atclone"git clone https://github.com/pyenv/pyenv-virtualenv.git $PWD/plugins/pyenv-virtualenv; \
     ./libexec/pyenv init - > zpyenv.zsh" \
