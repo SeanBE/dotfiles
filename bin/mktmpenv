@@ -1,14 +1,15 @@
-#!/bin/sh -e
+#!/usr/bin/zsh
 
 if [ -n "$1" ]; then
   pyenv_version="$1"
 else
   pyenv_version=$(pyenv version-name | sed 's/:.*//')
 fi
+
 if [ -n "$2" ]; then
   venv_name="$2"
 else
-  venv_name=$(mktemp --dry-run -d tmp-${pyenv_version}-XXXXXX)
+  venv_name=$(mktemp --dry-run -d "tmp-${pyenv_version}-XXXXXX")
 fi
 
 pyenv virtualenv "${pyenv_version}" "${venv_name}"
@@ -18,7 +19,9 @@ echo "Entering a new shell session with virtualenv '${venv_name}' (${pyenv_versi
 echo "It will be removed when exiting (ctrl+d or 'exit')."
 
 export PYENV_VERSION="${venv_name}"
-$SHELL
+
+# using zshi (script to run file after startup of interactive subshell..)
+$HOME/bin/zshi $HOME/.zsh/set_ps1.sh
 
 echo "Destroying temporary virtualenv '${venv_name}'."
 pyenv uninstall -f "${venv_name}"
