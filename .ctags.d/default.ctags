@@ -5,6 +5,8 @@
 --exclude=build
 --exclude=vendor
 --exclude=node_modules
+--exclude=.serverless
+--exclude=__pycache__
 --exclude=.mypy_cache
 
 --recurse=yes
