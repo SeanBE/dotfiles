@@ -3,7 +3,6 @@
 # TODO: where should this go??
 fpath+=$HOME/.zsh/functions
 
-source $HOME/.zsh/theme.zsh
 source $HOME/.zsh/plugins.zsh
 
 source $HOME/.zsh/aliases.zsh

@@ -16,7 +16,6 @@ zstyle :omz:plugins:ssh-agent lifetime 4h
 zstyle :omz:plugins:ssh-agent identities "" # force no ssh-keys loading at startup
 
 zinit lucid for \
-    OMZL::git.zsh \
     OMZL::history.zsh \
     OMZL::clipboard.zsh \
     OMZL::completion.zsh \
@@ -24,9 +23,7 @@ zinit lucid for \
     OMZL::directories.zsh \
     OMZL::termsupport.zsh \
     OMZL::key-bindings.zsh \
-    OMZL::theme-and-appearance.zsh \
     OMZP::git/git.plugin.zsh \
-    OMZP::aws/aws.plugin.zsh \
     OMZP::ssh-agent/ssh-agent.plugin.zsh \
     "https://github.com/agkozak/zsh-z/blob/master/zsh-z.plugin.zsh"
 
@@ -90,6 +87,11 @@ zinit light zsh-users/zsh-history-substring-search
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 zinit ice wait"0a" lucid atload"_zsh_autosuggest_start" 
 zinit light zsh-users/zsh-autosuggestions
+
+zinit ice lucid from"gh-r" \
+  as"program" pick"starship" \
+  atinit"eval \$(starship init zsh)"
+zinit light starship/starship
 
 autoload -Uz compinit; compinit
 zinit cdreplay -q
