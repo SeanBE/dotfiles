@@ -26,6 +26,8 @@
     tool = vimdiff
 [push]
     default = simple
+[pull]
+	ff = only
 [rebase]
     autosquash = true
 [branch]
@@ -118,4 +120,6 @@
     rc = rebase --continue
     rs = rebase --skip
 
-    whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+	whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+
+	tags = tag --format='%(creatordate:short)%09%(objectname:short)%09%(refname:strip=2)%09%(contents:subject)' --sort=-creatordate
