@@ -18,16 +18,16 @@ bind-key t set-tag
 bind-key / open-search
 bind-key ^U pageup
 bind-key ^D pagedown
-bind-key f select-filter
 bind-key ^N toggle-article-read
 bind-key UP up
 bind-key DOWN down
 
 articlelist-title-format "Feed '%T' (%u unread)%?F? matching filter `%F'&? - %U"
+feedlist-title-format "%?F?Feeds&All feeds? (%u/%t unread - %U entries)%?F? matching filter '%F'&?%?T? - tag '%T'&?"
 
 bookmark-autopilot yes
 bookmark-interactive no
-bookmark-cmd "~/.newsboat/send-to-pocket.sh"
+bookmark-cmd "~/.newsboat/scripts/send-to-pocket.sh"
 
 include "~/.newsboat/colors"
 include "~/.newsboat/ignore"
