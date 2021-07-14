@@ -18,6 +18,7 @@ format = "[$user]($style)@"
 style = "blue"
 truncation_length = 8
 truncate_to_repo = false
+read_only = ""
 
 [git_branch]
 style = ""
