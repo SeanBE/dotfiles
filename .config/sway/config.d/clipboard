@@ -1,11 +1,11 @@
-set $clipman ~/.go/bin/clipman
-set $histpath ~/.local/share/clipman-primary.json
+# using https://github.com/yory8/clipman
+exec_always pkill wl-paste
+exec_always ~/.go/bin/clipman restore   # serve last item from history on startup
 
-exec pkill wl-paste
-
-# Start clipman clipboard manager
-exec $clipman restore
-exec wl-paste -t text --watch $clipman store --histpath=$histpath 1>> ~/.cache/clipman.log 2>&1
+# watch wl-paste selections and store with clipman
+exec_always wl-paste -t text --watch ~/bin/clipman_store
 
 # clipboard keybindings
-bindsym $mod+p exec $clipman pick --tool=rofi --histpath=$histpath
+bindsym $mod+p exec ~/.go/bin/clipman pick --tool=rofi
+
+# vim: ft=conf
