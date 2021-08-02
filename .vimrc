@@ -105,7 +105,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/goyo.vim'
 
 Plug 'majutsushi/tagbar'
-Plug 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim', { 'commit': '709b2d8' }
 Plug 'daviesjamie/vim-base16-lightline'
 Plug 'airblade/vim-gitgutter'
 Plug '~/.local/share/base16-manager/chriskempson/base16-vim'
@@ -162,6 +162,12 @@ nnoremap <C-k> <C-W>k
 nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
 
+"noremap <Up> <Nop>
+"noremap <Down> <Nop>
+"noremap <Left> <Nop>
+"noremap <Right> <Nop>
+
+
 " trim whitespace
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
@@ -203,6 +209,16 @@ source ~/.vim/colorscheme.vim
 let g:lightline = {
      \ 'colorscheme': 'base16',
 \}
+
+let g:lightline.active = {
+		    \ 'left': [ [ 'mode', 'paste' ],
+		    \           [ 'readonly', 'filename', 'modified' ] ],
+            \ 'right': [] }
+
+let g:lightline.inactive = {
+		    \ 'left': [ [ 'filename' ] ],
+            \ 'right': [] }
+
 " }}}
 
 " nerdtree {{{
@@ -237,11 +253,11 @@ let g:fzf_preview_window = []
 
 let g:fzf_layout = { 'down': '30%' }
 
-nmap ; :Buffers<CR>
-nmap <Leader>t :Files<CR>
-nmap <Leader>r :Tags<CR>
+nmap <Leader>, :Buffers<CR>
+nmap <Leader>f :Files<CR>
+nmap <Leader>t :Tags<CR>
 nmap <Leader>s :Snippets<CR>
-nmap <Leader>f :Rg<CR>
+nmap <Leader>g :Rg<CR>
 
 " https://github.com/junegunn/fzf.vim/pull/704#issuecomment-450655634
 command! -nargs=* Rg
