@@ -71,9 +71,11 @@ type fzf &> /dev/null && {
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
+# slowest plugin - only fetch virtualenv on first time (project dead anyway..)
 zinit ice atclone"git clone https://github.com/pyenv/pyenv-virtualenv.git $PWD/plugins/pyenv-virtualenv; \
     ./libexec/pyenv init - > zpyenv.zsh" \
-    atinit'export PYENV_ROOT="$PWD"' atpull"%atclone" \
+    atinit'export PYENV_ROOT="$PWD"' \
+    atpull"./libexec/pyenv init - > zpyenv.zsh" \
     as"program" pick"bin/pyenv" src"zpyenv.zsh" nocompile"!"
 zinit light pyenv/pyenv
 
