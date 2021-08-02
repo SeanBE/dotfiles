@@ -3,11 +3,11 @@ SUDO='sudo'
 
 # only listing SCSI partitions
 partitions=$(lsblk -nrpo "name,type,label,mountpoint" |
-  awk '$1~"/dev/sd"&&$2=="part"{printf "%s %s %s\n",$1,$3,$4}')
+  awk -F'[ ]' '$1~"/dev/sd"&&$2=="part"{printf "%s %s %s\n",$1,$3,$4}') # use regex awk FS for single ws
 if [ -z "$partitions" ]; then exit 1; fi
 
 options=$(echo "$partitions" |
-  awk '{printf ($3 == "" ? "Mount" : "Unmount") " %s (%s)\n", $1, $2}')
+  awk -F'[ ]' '{printf ($3 == "" ? "Mount" : "Unmount") " %s (%s)\n", $1, $2}')
 nlines=$(echo "$partitions" | wc -l)
 
 # https://github.com/davatorium/rofi/issues/559 need to set -i with -dmenu
