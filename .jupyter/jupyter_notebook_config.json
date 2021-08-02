@@ -1,5 +1,6 @@
 {
   "NotebookApp": {
+    "token": "",
     "nbserver_extensions": {
       "jupyterlab_code_formatter": true
     }

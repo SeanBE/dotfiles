@@ -144,8 +144,9 @@ titlebar_border_thickness 1
 titlebar_padding 1
 
 bar {
-    position top
+    position bottom
     status_command i3blocks
+    #status_command i3status-rs ~/i3status.toml
     colors {
 	    background $base00
 	    separator  $base01

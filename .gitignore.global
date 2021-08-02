@@ -1,6 +1,7 @@
 # Misc #
 ###################
 tags
+.ignore
 .rgignore
 
 # Python #
@@ -9,6 +10,7 @@ __pycache__
 .mypy_cache
 .python-version
 pyrightconfig.json
+.python-root
 
 # Compiled source #
 ###################
@@ -47,3 +49,6 @@ pyrightconfig.json
 ehthumbs.db
 Icon?
 Thumbs.db
+
+# JS
+node_modules
