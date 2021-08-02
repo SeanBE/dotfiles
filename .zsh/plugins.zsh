@@ -15,6 +15,7 @@ type zinit &> /dev/null && {
 zstyle :omz:plugins:ssh-agent lifetime 4h
 zstyle :omz:plugins:ssh-agent identities "" # force no ssh-keys loading at startup
 
+# TODO: pull out what you need from https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/theme-and-appearance.zsh
 zinit lucid for \
     OMZL::history.zsh \
     OMZL::clipboard.zsh \
@@ -61,7 +62,7 @@ zinit light junegunn/fzf
 
 type fzf &> /dev/null && {
     export FZF_DEFAULT_OPTS="--height 20% --color=16"
-    export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
+    export FZF_DEFAULT_COMMAND='rg --files --follow --hidden --ignore-global --no-ignore-vcs'
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
     export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 }

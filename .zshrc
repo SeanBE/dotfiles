@@ -8,11 +8,7 @@ source $HOME/.zsh/plugins.zsh
 source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/bindings.zsh
 
-BASE16_SHELL="$HOME/.local/share/base16-manager/chriskempson/base16-shell/"
-[ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        eval "$("$BASE16_SHELL/profile_helper.sh")"
-
+export DELTA_FEATURES=$BASE16_THEME
 export PATH=/usr/local/go/bin:$PATH
 export PATH=$(go env GOPATH)/bin:$PATH
 export PATH="$HOME/.cargo/bin:$PATH"
