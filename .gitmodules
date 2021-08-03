@@ -5,3 +5,9 @@
     ignore = dirty
 	path = .local/share/fonts/source-code-pro
 	url = https://github.com/adobe-fonts/source-code-pro.git
+[submodule ".zsh/repos/ohmyzsh"]
+	path = .zsh/repos/ohmyzsh
+	url = https://github.com/ohmyzsh/ohmyzsh
+[submodule ".zsh/repos/z"]
+	path = .zsh/repos/z
+	url = https://github.com/agkozak/zsh-z.git

@@ -1,0 +1,41 @@
+[[item]]
+template = "alacritty"
+subtemplate = "default"
+file = "~/.config/alacritty/colors.yml"
+rewrite = true
+
+[[item]]
+template = "sway"
+subtemplate = "colors"
+file = "~/.config/sway/colorscheme"
+rewrite = true
+hook = "swaymsg reload"
+light = false
+
+[[item]]
+template = "neovim"
+file = "~/.config/nvim/lua/colors.lua"
+rewrite = true
+
+[[item]]
+template = "weechat"
+file = "~/.weechat/theme.conf"
+rewrite = true
+
+[[item]]
+template = "zathura"
+file = "~/.config/zathura/zathura_theme"
+rewrite = true
+
+[[item]]
+template = "mako"
+file = "~/.config/mako/config"
+rewrite = false
+hook = "makoctl reload"
+start= "# start flavours"
+end = "# end flavours"
+
+[[item]]
+template = "rofi"
+file = "~/.config/rofi/theme.rasi"
+rewrite = true
