@@ -16,6 +16,10 @@ export PATH="$HOME/bin:$PATH"
 export PATH="/opt/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
+# TODO: move elsewhere
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
 source $HOME/.zsh/functions.zsh
 
 umask 0002  # setting umask here since its being set to 0077 somewhere...

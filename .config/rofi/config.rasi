@@ -8,5 +8,4 @@ configuration {
 	case-sensitive: false;
 }
 
-/* added via base16-manager (theme.rasi) */
-@import "theme"
+@theme "theme.rasi"
