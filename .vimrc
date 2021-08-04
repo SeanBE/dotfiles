@@ -69,7 +69,6 @@ set softtabstop=4               " insert/delete 4 spaces when hitting a TAB/BACK
 set expandtab                   " insert spaces when hitting TABs
 set shiftround                  " round indent to multiple of shiftwidth
 
-" lightline requires the following
 set noshowmode                  " don't show mode in last line
 set laststatus=2                " last window always has a status line
 
@@ -105,10 +104,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/goyo.vim'
 
 Plug 'majutsushi/tagbar'
-Plug 'itchyny/lightline.vim', { 'commit': '709b2d8' }
-Plug 'daviesjamie/vim-base16-lightline'
 Plug 'airblade/vim-gitgutter'
-Plug '~/.local/share/base16-manager/chriskempson/base16-vim'
 
 "" Search
 Plug '~/.zinit/plugins/junegunn---fzf'
@@ -201,24 +197,6 @@ au FileType dockerfile set noexpandtab
 " notez.vim {{{
 "let g:loaded_notez = 1
 let g:notez_dir="~/.notes"
-" }}}
-
-" colorscheme {{{
-let base16colorspace=256
-source ~/.vim/colorscheme.vim
-let g:lightline = {
-     \ 'colorscheme': 'base16',
-\}
-
-let g:lightline.active = {
-		    \ 'left': [ [ 'mode', 'paste' ],
-		    \           [ 'readonly', 'filename', 'modified' ] ],
-            \ 'right': [] }
-
-let g:lightline.inactive = {
-		    \ 'left': [ [ 'filename' ] ],
-            \ 'right': [] }
-
 " }}}
 
 " nerdtree {{{
