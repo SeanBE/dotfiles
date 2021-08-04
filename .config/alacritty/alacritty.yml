@@ -2,6 +2,9 @@ env:
   TERM: alacritty
 window:
   decorations: none
+  padding:
+    x: 2
+    y: 0
 
 scrolling:
   history: 10000

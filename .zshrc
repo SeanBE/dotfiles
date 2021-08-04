@@ -13,12 +13,18 @@ export PATH=/usr/local/go/bin:$PATH
 export PATH=$(go env GOPATH)/bin:$PATH
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="/opt/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 # TODO: move elsewhere
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+export FZF_DEFAULT_OPTS="--height 20% --color=16"
+export FZF_DEFAULT_COMMAND='rg --files --follow --hidden --ignore-global --no-ignore-vcs'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 
 source $HOME/.zsh/functions.zsh
 
