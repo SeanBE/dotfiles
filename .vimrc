@@ -107,7 +107,7 @@ Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
 
 "" Search
-Plug '~/.zinit/plugins/junegunn---fzf'
+Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
 
 "" Language

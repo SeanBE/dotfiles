@@ -14,7 +14,7 @@ light = false
 
 [[item]]
 template = "neovim"
-file = "~/.config/nvim/lua/colors.lua"
+file = "~/.config/nvim/colors/flavours.lua"
 rewrite = true
 
 [[item]]
