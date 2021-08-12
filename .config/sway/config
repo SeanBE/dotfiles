@@ -149,7 +149,7 @@ gaps inner 5
 bar {
     position bottom
     status_command i3blocks
-    #status_command i3status-rs ~/i3status.toml
+    #status_command i3status-rs
     colors {
 	    background $base00
 	    separator  $base01
