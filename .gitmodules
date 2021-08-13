@@ -1,15 +1,15 @@
-[submodule ".tmux/plugins/tpm"]
-	path = .tmux/plugins/tpm
+[submodule "tmux/.tmux/plugins/tpm"]
+	path = tmux/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
-[submodule ".zsh/repos/ohmyzsh"]
-	path = .zsh/repos/ohmyzsh
+[submodule "zsh/.zsh/repos/ohmyzsh"]
+	path = zsh/.zsh/repos/ohmyzsh
 	url = https://github.com/ohmyzsh/ohmyzsh
-[submodule ".zsh/repos/z"]
-	path = .zsh/repos/z
+[submodule "zsh/.zsh/repos/z"]
+	path = zsh/.zsh/repos/z
 	url = https://github.com/agkozak/zsh-z.git
-[submodule ".zsh/repos/zsh-history-substring-search"]
-	path = .zsh/repos/zsh-history-substring-search
+[submodule "zsh/.zsh/repos/zsh-history-substring-search"]
+	path = zsh/.zsh/repos/zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search.git
-[submodule ".zsh/repos/zsh-autosuggestions"]
-	path = .zsh/repos/zsh-autosuggestions
+[submodule "zsh/.zsh/repos/zsh-autosuggestions"]
+	path = zsh/.zsh/repos/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
