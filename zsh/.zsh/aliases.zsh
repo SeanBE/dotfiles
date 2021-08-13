@@ -1,5 +1,3 @@
-alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
 alias vi='vimx'
 alias vim='vimx'
 
