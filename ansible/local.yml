@@ -1,0 +1,5 @@
+- hosts: localhost
+  become: yes
+  tasks:
+    - include: tasks/sys.yml
+    - include: tasks/python.yml

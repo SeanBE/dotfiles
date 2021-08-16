@@ -1,0 +1,95 @@
+- name: Define Fedora major version number
+  set_fact:
+    fedora_version: "{{ hostvars['localhost'].ansible_distribution_major_version }}"
+  tags:
+    - install
+
+- name: Check for RPM Fusion repo
+  stat:
+    path: '/etc/yum.repos.d/rpmfusion-free.repo'
+  register: rpmfusion_repo
+  tags:
+    - install
+
+- name: Enable access to RPM Fusion repos
+  dnf:
+    disable_gpg_check: yes
+    name:
+      - "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version }}.noarch.rpm"
+      - "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_version }}.noarch.rpm"
+  when: not rpmfusion_repo.stat.exists
+  tags:
+    - install
+
+# TODO: split packages up (e.g python build deps etc, applications, buid tools)
+- name: Install system packages
+  tags:
+    - install
+  dnf: 
+    name:
+      - zsh
+      - git
+      - htop
+      - nmap
+      - tmux
+      - jq
+      - weechat
+      - vlc
+      - ffmpeg
+      - ftp
+      - rclone
+      - rsync
+      - gcc-c++
+      - ShellCheck
+      - make
+      - cmake
+      - restic 
+      - docker-compose
+      - podman
+      - sway
+      - swayidle
+      - swaylock
+      - grim
+      - slurp
+      - mako
+      - youtube-dl
+      - mpv
+      - wf-recorder
+      - lapack-devel
+      - pandoc
+      - blas-devel
+      - screenfetch
+      - readline-devel
+      - wl-clipboard
+      - libtool 
+      - autoconf
+      - pkgconf
+      - gcc
+      - openssl-devel
+      - rofi
+      - sqlite
+      - sqlite-devel
+      - zathura
+      - zathura-pdf-mupdf
+      - nfs-utils
+      - zlib-devel
+      - weechat
+      - acpi
+      - fuse
+      - exfat-utils
+      - libffi-devel
+      - bzip2
+      - bzip2-devel
+      - pavucontrol 
+      - postgresql
+      - fontconfig
+      - freetype-devel
+      - fontconfig-devel 
+      - stow
+      - ranger
+      - libxcb-devel 
+      - libxkbcommon-devel 
+      - g++
+      - light
+      - adobe-source-code-pro-fonts
+    state: latest
