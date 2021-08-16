@@ -1,0 +1,32 @@
+# TODO: version variables
+# TODO: check out https://github.com/jlund/ansible-go/blob/master/tasks/main.yml
+- name: Check if golang installed
+  become: no
+  command: test -x /usr/local/go/bin/go
+  ignore_errors: yes
+  register: go_present
+  changed_when: False
+  tags:
+    - go
+
+- name: Go | Download distribution
+  become: no
+  get_url:
+    url: "https://storage.googleapis.com/golang/go1.17.linux-amd64.tar.gz"
+    dest: /tmp/go.tar.gz
+  when: go_present is failed
+  tags:
+    - go
+
+- name: Go | Unpack distribution
+  unarchive: src=/tmp/go.tar.gz dest=/usr/local  copy=no
+  become: yes
+  when: go_present is failed
+  tags:
+    - go
+
+- name: go install clipman
+  shell: "GOPATH=$HOME/.go /usr/local/go/bin/go get github.com/yory8/clipman"
+  become: no
+  tags:
+    - go

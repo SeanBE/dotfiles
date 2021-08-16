@@ -1,0 +1,64 @@
+# https://github.com/cdown/ansible-desktop/blob/325dffb99ba7f162726140336483a469dff7f620/tasks/rustup.yml
+- name: Check if rustup is installed
+  become: no
+  stat:
+    path: "~/.cargo/bin/rustup"
+  register: rustup_stat
+  tags:
+    - rust
+    
+
+- name: Download rustup.sh
+  become: no
+  get_url:
+    url: https://sh.rustup.rs
+    dest: /tmp/rustup.sh
+    mode: 0755
+  when: not rustup_stat.stat.exists
+  tags:
+    - rust
+
+- name: Install rustup using rustup.sh
+  become: no
+  command: /tmp/rustup.sh -y
+  args:
+    creates: "~/.cargo/bin/rustup'
+  when: not rustup_stat.stat.exists
+  tags:
+    - rust
+
+- name: Ensure existing rustup-managed components are up to date
+  become: no
+  command: $HOME/.cargo/bin/rustup update
+  register: rustup_update
+  changed_when: "'updated' in rustup_update.stdout"
+  tags:
+    - rust
+
+- shell: "~/.cargo/bin/cargo install --list | awk '$0 ~ /^[a-zA-Z]/ { print $1 }'"
+  become: no
+  register: cargo_pkgs
+  changed_when: false
+  tags:
+    - rust
+
+- name: Install rust utilities
+  command: "~/.cargo/bin/cargo install {{ item }}"
+  with_items:
+    - hyperfine
+    - ripgrep
+    - cargo-update
+    - fd-find
+    - exa
+    - bat
+    - git-trim
+    - git-absorb
+    - starship
+    - xsv
+    - alacritty
+    - git-delta
+    - flavours
+  become: no
+  when: 'item not in cargo_pkgs.stdout_lines'
+  tags:
+    - rust

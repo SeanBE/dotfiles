@@ -1,0 +1,91 @@
+ - name: zsh facts
+   shell: 'echo $SHELL'
+   register: default_shell
+   changed_when: False
+   tags:
+     - shell
+
+- name: make zsh default
+  register: make_zsh_default
+  shell: usermod -s /bin/zsh sean
+  when: default_shell.stdout.find('/bin/zsh') == -1
+  tags:
+    - shell
+
+- name: create .zshrc"
+  become: no
+  when: make_zsh_default is changed
+  file: path="~/.zshrc" state=touch
+  tags:
+    - shell
+
+- name: create .ssh folder and set filemode
+  become: no
+  ansible.builtin.file:
+    path: $HOME/.ssh
+    state: directory
+    mode: '0700'
+  tags:
+    - shell
+
+# TODO: apply patch..
+# 1.1.4 requires completion diff..
+# 5c5
+#<     local state com cur
+#---
+#>     local state com cur opts
+# TODO: create directories elsewhere..
+- name: install poetry completions
+  become: no
+  shell: "mkdir -p .zsh/functions && poetry completions zsh > ~/.zsh/functions/_poetry"
+  tags:
+    - shell
+
+- name: clone fzf repository
+  become: no
+  git:
+    repo: https://github.com/junegunn/fzf
+    dest: ~/.fzf
+  tags:
+    - shell
+
+- name: install fzf
+  become: no
+  shell: "~/.fzf/install --no-update-rc"
+  tags:
+    - shell
+
+# TODO: should this be here..
+- name: 'Ensure proper ssh/config permissions'
+  become: no
+  file:
+    path: ~/.ssh/config
+    mode: '700'
+  when: dotfiles is success
+  tags:
+    - shell
+
+- name: 'Ensure proper gnupg permissions'
+  become: no
+  file:
+    path: ~/.gnupg/
+    mode: '700'
+  when: dotfiles is success
+  tags:
+    - shell
+
+# TODO: versions
+- name: get docker-compose completions
+  become: no
+  get_url:
+    url: "https://raw.githubusercontent.com/docker/compose/1.29.2/contrib/completion/zsh/_docker-compose"
+    dest: ~/.zsh/functions/_docker-compose
+  tags:
+    - shell
+- name: get docker completions
+  become: no
+  get_url:
+    url: "https://raw.githubusercontent.com/docker/cli/8e08b72450719baed03eed0e0713aae885315bac/contrib/completion/zsh/_docker"
+    dest: ~/.zsh/functions/_docker
+  tags:
+    - shell

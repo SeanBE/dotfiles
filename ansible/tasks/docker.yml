@@ -1,0 +1,46 @@
+# TODO: check out ansible galaxy role
+- name: Docker | Check if is present
+  command: test -x /usr/bin/docker
+  ignore_errors: yes
+  register: docker_present
+  changed_when: False
+  tags:
+      - docker
+
+- name: Docker | Install dependencies
+  dnf:
+    name:
+      - dnf-plugins-core
+    state: "present"
+  register: result
+  until: result is not failed
+  tags:
+    - docker
+
+- name: Docker | add repo
+  shell: "dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo"
+  tags:
+    - docker
+
+- name: Docker | Install docker-ce
+  dnf:
+    name: 
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    state: "present"
+  tags:
+    - docker
+  when: docker_present is failed
+
+# TODO: username to var
+- name: Docker | Add current user to docker group
+  user: name="sean" groups=docker append=yes
+  tags:
+      -docker
+
+- name: Docker | Start and enable service
+  service: name=docker state=restarted enabled=yes
+      tags:
+          -docker
+

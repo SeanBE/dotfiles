@@ -1,5 +1,19 @@
+# TODO: update flavours templates sources etc. apply theme.Requires files/folders to exist (rofi, mako config etc)
+
+# TODO: https://github.com/pierrechevalier83/workstyle
+ 
+#TODO: git clone https://github.com/vivien/i3blocks
+#cd i3blocks
+#./autogen.sh && ./configure && make && sudo make install
+#git clone https://github.com/vivien/i3blocks-contrib.git ~/.config/i3blocks/blocklets
+#cd ~/.config/i3blocks/blocklets/cpu_usage2 && make
+
 - hosts: localhost
   become: yes
   tasks:
     - include: tasks/sys.yml
     - include: tasks/python.yml
+    - include: tasks/docker.yml
+    - include: tasks/rust.yml
+    - include: tasks/golang.yml
+    - include: tasks/shell.yml
