@@ -22,18 +22,31 @@
     - install
 
 # TODO: split packages up (e.g python build deps etc, applications, buid tools)
+# from dnf history
+# dbus-devel livecd-tools smartmontools exfatprogs ninja-build 
+# patch gettext zbar libtiff-devel mg libjpeg-devel file-devel
+# fuse-devel mg
+# ntfs-3g-devel ntfs-3g
+# guix
+# clang clang9.0-devel
+# gmp-devel libffi zlib-devel xz ghc
+# libxslt-devel
+# libseccomp-devel jansson-devel libyaml-devel libxml2-devel
+# acpi_call
+# tlp tlp-rdw
+# lm_sensors sxiv texlive-scheme-full xbacklight powertop tlp zathura-pdf-mupdf
 - name: Install system packages
   tags:
     - install
   dnf: 
     name:
       - zsh
+      - vim
       - git
       - htop
       - nmap
       - tmux
       - jq
-      - weechat
       - vlc
       - ffmpeg
       - ftp
@@ -44,7 +57,6 @@
       - make
       - cmake
       - restic 
-      - docker-compose
       - podman
       - sway
       - swayidle
@@ -92,4 +104,19 @@
       - g++
       - light
       - adobe-source-code-pro-fonts
+      - mupdf
+      - unrar
+      - imv
+      - isync
+      - msmtp
+      - neomutt
+      - wkhtmltopdf
+      - ansible
+      - gnupg
+      - tar
+      - prename
+      - automake
+      - unzip
+      - diffpdf
+      - perl
     state: latest
