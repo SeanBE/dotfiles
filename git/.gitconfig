@@ -1,7 +1,7 @@
 [init]
     templatedir = ~/.git_templates
 [core]
-	editor = /usr/bin/vimx
+	editor = /usr/bin/vim
     excludesfile = ~/.gitignore.global
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 	pager = delta
@@ -9,12 +9,12 @@
 [interactive]
 	diffFilter = delta --color-only
 [delta]
-	whitespace-error-style = 22 reverse
 	side-by-side = true
-	line-numbers = true
-[delta "ocean"]
+    line-numbers = true
+	whitespace-error-style = 22 reverse
+[delta "darkmode"]
     syntax-theme = gruvbox
-[delta "solarized-light"]
+[delta "lightmode"]
     syntax-theme = gruvbox-light
 [absorb] # tummychow/git-absorb
     maxStack=10 # max number of commits to look into for fixup commits
@@ -63,7 +63,7 @@
     ammend = amend
     amen = commit --amend --no-edit
 	revert-amend = reset --soft HEAD@{1}
-	
+
 	ack = grep --break --heading
 	abbrev = !sh -c 'git rev-parse --short ${1-`echo HEAD`}' -
 
