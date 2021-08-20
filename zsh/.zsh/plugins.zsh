@@ -1,9 +1,9 @@
 # force no ssh-keys loading at startup
-zstyle :omz:plugins:ssh-agent identities "" 
+zstyle :omz:plugins:ssh-agent identities ""
 zstyle :omz:plugins:ssh-agent lifetime 4h
 
 # from https://gist.github.com/ctechols/ca1035271ad134841284
-autoload -Uz compinit 
+autoload -Uz compinit
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
 	compinit;
 else

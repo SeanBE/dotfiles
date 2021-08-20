@@ -1,5 +1,5 @@
-alias vi='vimx'
-alias vim='vimx'
+alias vim='nvim'
+alias vi='/usr/bin/vim'
 
 alias dokcer='docker'
 alias docker-rmi-dangling='docker rmi $* $(docker images -q -f dangling=true)'
