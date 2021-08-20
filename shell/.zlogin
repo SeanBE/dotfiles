@@ -1,4 +1,4 @@
-# loaded in login shells after .zshrc_
+# loaded in login shells after .zshrc
 
 # More tricks from prezto
 # Execute code that does not affect the current session in the background.

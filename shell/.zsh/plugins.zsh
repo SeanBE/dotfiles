@@ -28,8 +28,11 @@ source ~/.fzf.zsh
 function pyenv() {
     # lazy load pyenv
     unset -f pyenv
-    eval "$(command pyenv init -)"
-    eval "$(command pyenv virtualenv-init -)"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init - zsh)"
+    # virtualenv long abandoned unfortunately
+    # by running this again..virtualenv seems to work..
+    eval "$(pyenv init --path)"
     pyenv $@
 }
 
