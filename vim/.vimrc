@@ -127,7 +127,8 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'w0rp/ale'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ConradIrwin/vim-bracketed-paste'
-Plug 'tpope/vim-fugitive'
+" https://github.com/tpope/vim-fugitive/issues/1791
+Plug 'tpope/vim-fugitive', { 'commit': '4cdeff8c33ec2fe0686324bf1846ce158c452754' }
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'SirVer/ultisnips'
@@ -364,11 +365,6 @@ let g:gitgutter_map_keys = 0
 highlight clear GitGutterAdd
 highlight clear GitGutterDelete
 highlight clear GitGutterChange
-" }}}
-
-" white space highlight {{{
-"highlight RedundantWhitespace ctermbg=green guibg=green
-"match RedundantWhitespace /\s\+$\| \+\ze\t/
 " }}}
 
 " vim:ts=2:sw=2:sts=2:fdm=marker:foldlevel=0:et
