@@ -101,7 +101,7 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# Shutdown, Reboot, Lock Screen, and Logout 
+# Shutdown, Reboot, Lock Screen, and Logout
 mode "power" {
     bindsym r         exec --no-startup-id systemctl reboot, mode "default"
     bindsym p         exec --no-startup-id systemctl poweroff, mode "default"
@@ -114,9 +114,9 @@ bindsym $mod+l      exec sh ~/.config/sway/scripts/lockman.sh $background, mode 
 bindsym $mod+Shift+p      mode "power"
 
 # Pulse Audio controls
-bindsym --locked XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks
-bindsym --locked XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
-bindsym --locked XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
+bindsym --locked XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+
+bindsym --locked XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%-
+bindsym --locked XF86AudioMute exec amixer -q -D pulse sset Master toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Brightness
@@ -148,8 +148,7 @@ gaps inner 5
 
 bar {
     position bottom
-    status_command i3blocks
-    #status_command i3status-rs
+    status_command ~/.cargo/bin/i3status-rs
     colors {
 	    background $base00
 	    separator  $base01
