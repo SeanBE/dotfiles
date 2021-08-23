@@ -3,7 +3,7 @@
   tasks:
     #- include: tasks/sys.yml
     - include: tasks/python.yml
-    #- include: tasks/docker.yml
+    - include: tasks/docker.yml
     - include: tasks/rust.yml
     #- include: tasks/golang.yml
     #- include: tasks/shell.yml

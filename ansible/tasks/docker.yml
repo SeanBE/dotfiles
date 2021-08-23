@@ -1,14 +1,11 @@
-# # TODO: docker-compose
-# TODO: check out ansible galaxy role
-- name: Docker | Check if is present
-  command: test -x /usr/bin/docker
-  ignore_errors: yes
-  register: docker_present
-  changed_when: False
+- name: Check if docker present
+  stat:
+    path: /usr/bin/docker
+  register: docker_present_stat
   tags:
       - docker
 
-- name: Docker | Install dependencies
+- name: Install docker dependencies
   dnf:
     name:
       - dnf-plugins-core
@@ -18,30 +15,54 @@
   tags:
     - docker
 
-- name: Docker | add repo
+- name: add docker repo
   shell: "dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo"
+  when: not docker_present_stat.stat.exists
   tags:
     - docker
 
-- name: Docker | Install docker-ce
+- name: Install docker
   dnf:
-    name: 
+    name:
       - docker-ce
       - docker-ce-cli
       - containerd.io
     state: "present"
+  when: not docker_present_stat.stat.exists
   tags:
     - docker
-  when: docker_present is failed
 
 # TODO: username to var
-- name: Docker | Add current user to docker group
+- name: Add current user to docker group
   user: name="sean" groups=docker append=yes
   tags:
-      -docker
+      - docker
 
-- name: Docker | Start and enable service
+- name: Start and enable docker service
   service: name=docker state=restarted enabled=yes
-      tags:
-          -docker
+  tags:
+      - docker
 
+- name: Check if docker-compose is installed
+  stat:
+    path: /usr/local/bin/docker-compose
+  register: _docker_compose_binary
+  tags:
+      - docker
+
+#TODO: understand when clause here..
+- name: Download and install docker-compose
+  get_url:
+    url: "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64"
+    dest: /usr/local/bin/docker-compose
+  when: _docker_compose_binary is defined
+  tags:
+      - docker
+
+- name: Set chmod +x on docker-compose
+  file:
+    dest: /usr/local/bin/docker-compose
+    mode: a+x
+  when: _docker_compose_binary is defined
+  tags:
+      - docker
