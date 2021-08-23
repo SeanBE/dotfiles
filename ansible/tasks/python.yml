@@ -1,4 +1,5 @@
 - name: Install python build dependencies
+  become: yes
   tags:
     - python
   dnf:
@@ -21,7 +22,7 @@
   become: no
   git:
     repo: "https://github.com/pyenv/pyenv.git"
-    dest: "~/.pyenv"
+    dest: "$HOME/.pyenv"
     version: master
   tags:
     - python
@@ -29,7 +30,7 @@
 - name: check pyenv-virtualenv installed
   become: no
   stat:
-    path: "~/.pyenv/plugins/pyenv-virtualenv"
+    path: "$HOME/.pyenv/plugins/pyenv-virtualenv"
   register: pyenv_virtualenv
   tags:
     - python
@@ -37,9 +38,14 @@
 - name: git clone pyenv-virtualenv
   git:
     repo: https://github.com/pyenv/pyenv-virtualenv
-    dest: "~/.pyenv/plugins/pyenv-virtualenv"
+    dest: "$HOME/.pyenv/plugins/pyenv-virtualenv"
   become: no
   when: pyenv_virtualenv.stat.exists == false
+  tags:
+    - python
+
+- name: Ensure pip is available
+  shell: "PYENV_VERSION=system python3 -m ensurepip --user"
   tags:
     - python
 
@@ -49,7 +55,7 @@
     - python
   shell: "PYENV_VERSION=system python3 -m pip install --user pipx"
   args:
-    creates: "~/.local/bin/pipx"
+    creates: "$HOME/.local/bin/pipx"
   tags:
     - python
 
@@ -59,11 +65,18 @@
     - python
   shell: "PYENV_VERSION=system python3 -m pipx install poetry"
   args:
-    creates: "~/.poetry/bin/poetry"
+    creates: "$HOME/.local/pipx/venvs/poetry"
 
-# TODO: split into items otherwise boom
 - name: Install some tools via pipx
+  shell: "PYENV_VERSION=system python3 -m pipx install {{ item }}"
+  with_items:
+    - black
+    - jupyterlab
+    - streamlink
+    - awslogs
+    - awscli
   become: no
+  args:
+    creates: "~/.local/pipx/venvs/{{ item }}"
   tags:
     - python
-  shell: "PYENV_VERSION=system python3 -m pipx install awscli awslogs streamlink jupyterlab black"
