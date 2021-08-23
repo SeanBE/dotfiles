@@ -1,9 +1,9 @@
- - name: zsh facts
-   shell: 'echo $SHELL'
-   register: default_shell
-   changed_when: False
-   tags:
-     - shell
+- name: zsh facts
+  shell: 'echo $SHELL'
+  register: default_shell
+  changed_when: False
+  tags:
+    - shell
 
 - name: make zsh default
   register: make_zsh_default
@@ -37,7 +37,7 @@
 # TODO: create directories elsewhere..
 - name: install poetry completions
   become: no
-  shell: "mkdir -p .zsh/functions && poetry completions zsh > ~/.zsh/functions/_poetry"
+  shell: "mkdir -p .zsh/functions && ~/.local/bin/poetry completions zsh > ~/.zsh/functions/_poetry"
   tags:
     - shell
 
@@ -51,28 +51,28 @@
 
 - name: install fzf
   become: no
-  shell: "~/.fzf/install --no-update-rc"
+  shell: "~/.fzf/install --no-update-rc --key-bindings --completion"
   tags:
     - shell
 
 # TODO: should this be here..
-- name: 'Ensure proper ssh/config permissions'
-  become: no
-  file:
-    path: ~/.ssh/config
-    mode: '700'
-  when: dotfiles is success
-  tags:
-    - shell
-
-- name: 'Ensure proper gnupg permissions'
-  become: no
-  file:
-    path: ~/.gnupg/
-    mode: '700'
-  when: dotfiles is success
-  tags:
-    - shell
+#- name: 'Ensure proper ssh/config permissions'
+#  become: no
+#  file:
+#    path: ~/.ssh/config
+#    mode: '700'
+#  when: dotfiles is success
+#  tags:
+#    - shell
+#
+#- name: 'Ensure proper gnupg permissions'
+#  become: no
+#  file:
+#    path: ~/.gnupg/
+#    mode: '700'
+#  when: dotfiles is success
+#  tags:
+#    - shell
 
 # TODO: versions
 - name: get docker-compose completions
@@ -89,3 +89,7 @@
     dest: ~/.zsh/functions/_docker
   tags:
     - shell
+
+
+#vi +PlugInstall +PlugUpdate +PlugUpgrade -c qall!
+#git clone https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim

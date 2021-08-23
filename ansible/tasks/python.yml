@@ -1,19 +1,19 @@
 - name: Install python build dependencies
   tags:
     - python
-  dnf: 
+  dnf:
     name:
-      - make 
-      - gcc 
-      - zlib-devel 
-      - bzip2 
-      - bzip2-devel 
-      - readline-devel 
-      - sqlite 
-      - sqlite-devel 
-      - openssl-devel 
-      - tk-devel 
-      - libffi-devel 
+      - make
+      - gcc
+      - zlib-devel
+      - bzip2
+      - bzip2-devel
+      - readline-devel
+      - sqlite
+      - sqlite-devel
+      - openssl-devel
+      - tk-devel
+      - libffi-devel
       - xz-devel
     state: latest
 
@@ -23,7 +23,7 @@
     repo: "https://github.com/pyenv/pyenv.git"
     dest: "~/.pyenv"
     version: master
-  tags: 
+  tags:
     - python
 
 - name: check pyenv-virtualenv installed
@@ -31,26 +31,26 @@
   stat:
     path: "~/.pyenv/plugins/pyenv-virtualenv"
   register: pyenv_virtualenv
-  tags: 
+  tags:
     - python
 
 - name: git clone pyenv-virtualenv
-  git: 
+  git:
     repo: https://github.com/pyenv/pyenv-virtualenv
     dest: "~/.pyenv/plugins/pyenv-virtualenv"
   become: no
   when: pyenv_virtualenv.stat.exists == false
-  tags: 
+  tags:
     - python
 
 - name: Install pipx
   become: no
-  tags: 
+  tags:
     - python
   shell: "PYENV_VERSION=system python3 -m pip install --user pipx"
   args:
     creates: "~/.local/bin/pipx"
-  tags: 
+  tags:
     - python
 
 - name: Install poetry
@@ -61,8 +61,9 @@
   args:
     creates: "~/.poetry/bin/poetry"
 
+# TODO: split into items otherwise boom
 - name: Install some tools via pipx
   become: no
   tags:
     - python
-  shell: "PYENV_VERSION=system python3 -m pipx install awscli awslogs streamlink jupyterlab"
+  shell: "PYENV_VERSION=system python3 -m pipx install awscli awslogs streamlink jupyterlab black"

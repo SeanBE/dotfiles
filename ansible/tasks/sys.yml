@@ -22,8 +22,8 @@
     - install
 
 # TODO: split packages up (e.g python build deps etc, applications, buid tools)
-# from dnf history
-# dbus-devel livecd-tools smartmontools exfatprogs ninja-build 
+        #- neomutt
+# dbus-devel livecd-tools smartmontools exfatprogs ninja-build
 # patch gettext zbar libtiff-devel mg libjpeg-devel file-devel
 # fuse-devel mg
 # ntfs-3g-devel ntfs-3g
@@ -35,10 +35,21 @@
 # acpi_call
 # tlp tlp-rdw
 # lm_sensors sxiv texlive-scheme-full xbacklight powertop tlp zathura-pdf-mupdf
+
 - name: Install system packages
-  tags:
-    - install
-  dnf: 
+  dnf:
+    name:
+      - vlc
+      - firefox
+      - firefox-wayland
+      - tar
+      - unzip
+      - weechat
+      - chromium
+
+
+- name: Install system packages
+  dnf:
     name:
       - zsh
       - vim
@@ -47,16 +58,27 @@
       - nmap
       - tmux
       - jq
-      - vlc
       - ffmpeg
+      - lm_sensors
+      - alsa-firmware
+      - alsa-plugins-pulseaudio
+      - pulseaudio-utils
+      - alsa-lib
+      - alsa-utils
+      - amixer
+      - openssl
+      - telnet
       - ftp
+      - openvpn-devel
+      - NetworkManager-openvpn
+      - dbus-devel-1
+      - dbus-1
       - rclone
       - rsync
       - gcc-c++
       - ShellCheck
       - make
       - cmake
-      - restic 
       - podman
       - sway
       - swayidle
@@ -64,6 +86,7 @@
       - grim
       - slurp
       - mako
+      - restic
       - youtube-dl
       - mpv
       - wf-recorder
@@ -73,7 +96,7 @@
       - screenfetch
       - readline-devel
       - wl-clipboard
-      - libtool 
+      - libtool
       - autoconf
       - pkgconf
       - gcc
@@ -85,38 +108,35 @@
       - zathura-pdf-mupdf
       - nfs-utils
       - zlib-devel
-      - weechat
       - acpi
       - fuse
       - exfat-utils
       - libffi-devel
       - bzip2
       - bzip2-devel
-      - pavucontrol 
+      - pavucontrol
       - postgresql
       - fontconfig
       - freetype-devel
-      - fontconfig-devel 
+      - fontconfig-devel
       - stow
       - ranger
-      - libxcb-devel 
-      - libxkbcommon-devel 
+      - libxcb-devel
+      - libxkbcommon-devel
       - g++
       - light
       - adobe-source-code-pro-fonts
       - mupdf
-      - unrar
       - imv
       - isync
       - msmtp
-      - neomutt
+      - unrar
       - wkhtmltopdf
       - ansible
       - gnupg
-      - tar
       - prename
       - automake
-      - unzip
       - diffpdf
       - perl
+      - neovim
     state: latest

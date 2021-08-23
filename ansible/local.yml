@@ -8,6 +8,8 @@
     #- include: tasks/golang.yml
     #- include: tasks/shell.yml
 
+    # TODO: look at latest calls for tlp https://linrunner.de/tlp/installation/fedora.html
+
     - name: Check if volta is installed
       become: no
       stat:

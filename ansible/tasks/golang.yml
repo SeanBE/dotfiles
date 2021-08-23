@@ -1,5 +1,4 @@
 # TODO: version variables
-# TODO: check out https://github.com/jlund/ansible-go/blob/master/tasks/main.yml
 - name: Check if golang installed
   become: no
   command: test -x /usr/local/go/bin/go
