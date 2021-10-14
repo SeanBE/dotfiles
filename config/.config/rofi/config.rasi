@@ -1,11 +1,9 @@
 configuration {
-	m: "-5"; /* has to be a string */
-    dpi: -1;
     lines: 15;
     location: 0;
     fullscreen: false;
     hide-scrollbar: true;
-	case-sensitive: false;
+    case-sensitive: false;
 }
 
 @theme "theme.rasi"
