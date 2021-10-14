@@ -1,15 +1,12 @@
 CACHE_PATH = vim.fn.stdpath('cache')
 
 local cmd = vim.cmd     				-- execute Vim commands
-local exec = vim.api.nvim_exec 	        -- execute Vimscript
+local exec = vim.api.nvim_exec 	-- execute Vimscript
 local fn = vim.fn       				-- call Vim functions
 local g = vim.g         				-- global variables
 local o = vim.o         				-- global options
 local b = vim.bo        				-- buffer-scoped options
 local w = vim.wo        				-- windows-scoped options
-
-g.mapleader = ' '
---let maplocalleader="\<Space>"
 
 o.mouse = 'a'
 o.backup = false
@@ -18,6 +15,8 @@ b.swapfile = false
 o.syntax = 'enable'
 
 o.grepprg='rg --no-heading --vimgrep'
+
+o.inccommand = 'nosplit'
 
 w.number = true
 w.relativenumber = true
@@ -32,6 +31,8 @@ o.smartcase = true
 -- remove whitespace on save
 cmd([[au BufWritePre * :%s/\s\+$//e]])
 
+
+o.breakindent = true
 o.hidden = true
 o.history = 1000
 o.lazyredraw = true
@@ -40,11 +41,10 @@ b.synmaxcol = 300
 o.termguicolors = true
 cmd([[colorscheme flavours]])
 
--- TODO: buffer vs global...
 b.expandtab = true
-b.shiftwidth = 2
-b.tabstop = 4
 b.smartindent = true
+--b.shiftwidth = 2
+--b.tabstop = 4
 
 cmd([[au BufEnter * set fo-=c fo-=r fo-=o]])
 cmd([[autocmd FileType text,markdown,xml,html,xhtml,javascript setlocal cc=0]])
@@ -53,6 +53,12 @@ cmd([[autocmd FileType go setlocal shiftwidth=8 tabstop=8]])
 
 g.indentLine_char = '|'       -- set indentLine character
 cmd([[autocmd FileType markdown let g:indentLine_enabled=0]])
+
+g.indent_blankline_char = '┊'
+g.indent_blankline_filetype_exclude = { 'help', 'packer' }
+g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
+g.indent_blankline_char_highlight = 'LineNr'
+g.indent_blankline_show_trailing_blankline_indent = false
 
 o.wrap = false
 o.sidescrolloff = 8
