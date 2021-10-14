@@ -1,6 +1,6 @@
 #zmodload zsh/zprof
 
-export DELTA_FEATURES="lightmode"
+export DELTA_FEATURES="darkmode"
 export FZF_DEFAULT_OPTS="--height 20% --color=16"
 export FZF_DEFAULT_COMMAND='rg --files --follow --hidden --ignore-global --no-ignore-vcs'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

@@ -36,6 +36,9 @@
 # tlp tlp-rdw
 # lm_sensors sxiv texlive-scheme-full xbacklight powertop tlp zathura-pdf-mupdf
 
+# TODO:avahi-ui-tools hplip hplip-gui
+# TODO: ImageMagick
+
 - name: Install system packages
   dnf:
     name:

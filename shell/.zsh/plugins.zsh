@@ -28,11 +28,11 @@ source ~/.fzf.zsh
 function pyenv() {
     # lazy load pyenv
     unset -f pyenv
-    eval "$(pyenv init - --no-rehash)"
+    eval "$(pyenv init --path --no-rehash)"
     eval "$(pyenv virtualenv-init - zsh)"
     # virtualenv long abandoned unfortunately
     # by running this again..virtualenv seems to work..
-    eval "$(pyenv init --path --no-rehash)"
+    eval "$(pyenv init - --no-rehash)"
     pyenv $@
 }
 
