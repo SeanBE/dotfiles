@@ -12,6 +12,15 @@ interval = 1
 
 [[block]]
 block = "sound"
+driver = "pulseaudio"
+device_kind = "sink"
+on_click = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+
+[[block]]
+block = "sound"
+driver = "pulseaudio"
+device_kind = "source"
+on_click = "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
 
 [[block]]
 block = "net"
