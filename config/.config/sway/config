@@ -19,6 +19,8 @@ exec swayidle -w \
 # Notification daemon
 exec_always --no-startup-id mako
 
+exec --no-startup-id ~/.config/sway/scripts/battery.sh
+
 ### Key bindings
 bindsym $mod+m exec --no-startup-id SUDO_ASKPASS=~/bin/askpassrofi.sh ~/bin/mountmenu
 bindsym $mod+o exec --no-startup-id SUDO_ASKPASS=~/bin/askpassrofi.sh ~/bin/openvpnmenu
@@ -31,7 +33,7 @@ bindsym $mod+x exec $term
 bindsym $mod+Shift+q kill
 
 # Start your launcher
-bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+d exec --no-startup-id ~/bin/multirofi.sh -show run
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -43,21 +45,25 @@ floating_modifier $mod normal
 # Reload the configuration file
 bindsym $mod+Shift+c reload
 
-# Move your focus around
+
+
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# Move the focused window with the same, but add Shift
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# move workspace to left and right monitors
+bindsym $mod+Shift+Ctrl+Up move workspace to output up
+bindsym $mod+Shift+Ctrl+Down move workspace to output down
 bindsym $mod+Shift+bracketleft move workspace to output left
 bindsym $mod+Shift+bracketright move workspace to output right
+
+bindsym $mod+tab workspace next_on_output
+bindsym $mod+Shift+tab workspace prev_on_output
 
 # Switch to workspace
 bindsym $mod+1 workspace 1
@@ -113,11 +119,14 @@ mode "power" {
 bindsym $mod+l      exec sh ~/.config/sway/scripts/lockman.sh $background, mode "default"
 bindsym $mod+Shift+p      mode "power"
 
-# Pulse Audio controls
+# Pulse Audio controls (available when locked)
 bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# can we put this on the xkb config instead for external (fn key)??
+bindsym --locked $mod+Shift+m exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Brightness
 bindsym --locked XF86MonBrightnessUp exec light -A 5
