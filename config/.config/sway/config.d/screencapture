@@ -1,9 +1,9 @@
-bindsym $mod+Print exec grim ~/Downloads/$(date +'screengrab_%Y%m%d-%H%M%S.png')    
-bindsym $mod+Shift+Print exec grim -g "$(slurp)" ~/Downloads/$(date +'screengrab_%Y%m%d-%H%M%S.png')    
+bindsym $mod+Print exec grim ~/Downloads/$(date +'screengrab_%Y%m%d-%H%M%S.png')
+bindsym $mod+Shift+Print exec grim -g "$(slurp)" ~/Downloads/$(date +'screengrab_%Y%m%d-%H%M%S.png')
 
 mode "record" {
-    bindsym r         exec 'pgrep wf-recorder && killall -s SIGINT wf-recorder || wf-recorder -f ~/Downloads/$(date +"recording_%Y%m%d-%H%M%S.mp4")', mode "default"
-    bindsym g         exec 'pgrep wf-recorder && killall -s SIGINT wf-recorder || wf-recorder -c gif -g "$(slurp)" -f ~/Downloads/$(date +"recording_%Y%m%d-%H%M%S.gif")', mode "default"
+    bindsym r         exec 'pgrep wf-recorder && killall -s SIGINT wf-recorder || wf-recorder --audio=0 -g "$(slurp -d)" -f ~/Downloads/$(date +"recording_%Y%m%d-%H%M%S.mp4")', mode "default"
+    bindsym g         exec 'pgrep wf-recorder && killall -s SIGINT wf-recorder || wf-recorder -c gif --audio=0 -g "$(slurp -d)" -f ~/Downloads/$(date +"recording_%Y%m%d-%H%M%S.gif")', mode "default"
     bindsym Return    mode "default"
     bindsym Escape    mode "default"
 }

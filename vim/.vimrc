@@ -114,7 +114,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'ekalinin/Dockerfile.vim'
-Plug '~/dev/personal/notez.vim'
+"" Plug '~/dev/personal/notez.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 

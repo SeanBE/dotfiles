@@ -38,6 +38,7 @@
 
 # TODO:avahi-ui-tools hplip hplip-gui
 # TODO: ImageMagick
+# TODO: wget2
 
 - name: Install system packages
   dnf:

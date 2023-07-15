@@ -1,2 +1,1 @@
 [build]
-target-dir = '.cargo/build_cache/'     # path of where to place all generated artifacts

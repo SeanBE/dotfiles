@@ -18,7 +18,7 @@ for cfg in $configs; do
 done
 
 nlines="${#options[@]}"
-choice=$(echo -e "$(printf "%s\n" "${options[@]}")" | rofi -dmenu -i -p vpn -width 500 -lines "$nlines")
+choice=$(echo -e "$(printf "%s\n" "${options[@]}")" | $HOME/bin/multirofi.sh -dmenu -i -p vpn -width 500 -lines "$nlines")
 action=$(echo "$choice" | cut -d' ' -f1)
 config=$(echo "$choice" | cut -d' ' -f3)
 case $action in

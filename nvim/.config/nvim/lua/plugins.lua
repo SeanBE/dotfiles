@@ -21,7 +21,9 @@ require('packer').startup(function()
   use 'tpope/vim-fugitive'
   use 'tpope/vim-commentary'
 
-  use 'ludovicchabant/vim-gutentags'
+  use { 'vimwiki/vimwiki', branch = 'dev' }
+
+  --use 'ludovicchabant/vim-gutentags'
 
   use 'nvim-lua/popup.nvim'
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
@@ -45,6 +47,21 @@ require('packer').startup(function()
 end)
 
 require("lsp")
+
+vim.g.vimwiki_global_ext = 0
+-- set vimwiki default path and syntax and disable all mappings
+vim.g.vimwiki_list = {{path='~/.notes', syntax='markdown', ext='.md'}}
+-- auto tags=1, auto_toc=1, auto_diary_index=1
+--vim.g.vimwiki_key_mappings = { global=0, mouse=0 }
+vim.g.vimwiki_key_mappings = { all_map = 0 }
+vim.g.vimwiki_auto_chdir = 1
+vim.g.vimwiki_diary_frequency = 'weekly'
+vim.g.vimwiki_diary_rel_path = 'journal/'
+vim.g.vimwiki_diary_index = 'journals'
+vim.g.vimwiki_diary_header = 'Journal'
+vim.g.vimwiki_diary_caption_level = 0
+
+ vim.api.nvim_command('au BufNewFile ~/.notes/journal/*.md call setline(1, "# ".expand(\'%:t\')[:9]." (Created at ".strftime(\'%Y-%m-%d-%H%M\').")")')
 
 -- Treesitter configuration
 -- Parsers must be installed manually via :TSInstall
@@ -131,6 +148,7 @@ require('telescope').setup {
   defaults = {
     vimgrep_arguments = {
       'rg',
+      '-L',
       '--color=never',
       '--no-heading',
       '--with-filename',

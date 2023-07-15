@@ -1,5 +1,5 @@
 #!/bin/sh
-#
+
 # Prepare the commit log message.
 # Called by "git commit" with the name of the file that has the
 # commit message, followed by the description of the commit

@@ -25,7 +25,7 @@ source ~/.zsh/repos/ohmyzsh/plugins/ssh-agent/ssh-agent.plugin.zsh
 
 source ~/.fzf.zsh
 
-function pyenv() {
+function pyenvv() {
     # lazy load pyenv
     unset -f pyenv
     eval "$(pyenv init --path --no-rehash)"

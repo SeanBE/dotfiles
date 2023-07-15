@@ -1,54 +1,24 @@
-# Misc #
-###################
 tags
 .ignore
 .rgignore
 
-# Python #
-###################
 __pycache__
 .mypy_cache
 .python-version
 pyrightconfig.json
 .python-root
+.venv*
 
-# Compiled source #
-###################
-*.com
-*.class
-*.dll
-*.exe
-*.o
-*.so
- 
-# Temporary files #
-###################
+*~
 *.swp
 *.swo
-*~
- 
-# Packages #
-############
+
 *.7z
-*.dmg
 *.gz
-*.iso
-*.jar
-*.rar
 *.tar
 *.zip
- 
-# Logs and databases #
-######################
+
 *.log
 *.sqlite
- 
-# OS generated files #
-######################
-.DS_Store*
-ehthumbs.db
-Icon?
-Thumbs.db
 
-# JS
 node_modules

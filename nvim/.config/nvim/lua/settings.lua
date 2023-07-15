@@ -54,11 +54,11 @@ cmd([[autocmd FileType go setlocal shiftwidth=8 tabstop=8]])
 g.indentLine_char = '|'       -- set indentLine character
 cmd([[autocmd FileType markdown let g:indentLine_enabled=0]])
 
-g.indent_blankline_char = '┊'
-g.indent_blankline_filetype_exclude = { 'help', 'packer' }
-g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
-g.indent_blankline_char_highlight = 'LineNr'
-g.indent_blankline_show_trailing_blankline_indent = false
+--vim.g.indent_blankline_char = '┊'
+--vim.g.indent_blankline_filetype_exclude = { 'help', 'packer' }
+--vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
+--vim.g.indent_blankline_char_highlight = 'LineNr'
+--vim.g.indent_blankline_show_trailing_blankline_indent = false
 
 o.wrap = false
 o.sidescrolloff = 8

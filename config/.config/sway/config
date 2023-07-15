@@ -10,11 +10,14 @@ set $background /usr/share/backgrounds/fedora-workstation/himalayan-desert-mount
 output * bg $background fill
 
 # Idle configuration
-exec swayidle -w \
-    timeout 300 'swaylock -f -i $background' \
-    timeout 600 'swaymsg "output * dpms off"' \
-    resume 'swaymsg "output * dpms on"' \
-    before-sleep 'swaylock -f -i $background'
+# TODO: see https://github.com/swaywm/swaylock/issues/217
+# daemonize needed since base sway config has a swayidle -w waiting for all processes to finish
+
+# exec swayidle -w \
+# 	timeout 180 'swaylock -f' \
+#         before-sleep 'swaylock -f' \
+# 	timeout 240 'swaymsg "output * dpms off"' \
+# 	resume 'swaymsg "output * dpms on"'
 
 # Notification daemon
 exec_always --no-startup-id mako
@@ -45,8 +48,6 @@ floating_modifier $mod normal
 # Reload the configuration file
 bindsym $mod+Shift+c reload
 
-
-
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -59,8 +60,8 @@ bindsym $mod+Shift+Right move right
 
 bindsym $mod+Shift+Ctrl+Up move workspace to output up
 bindsym $mod+Shift+Ctrl+Down move workspace to output down
-bindsym $mod+Shift+bracketleft move workspace to output left
-bindsym $mod+Shift+bracketright move workspace to output right
+bindsym $mod+Shift+Ctrl+Left move workspace to output left
+bindsym $mod+Shift+Ctrl+Right move workspace to output right
 
 bindsym $mod+tab workspace next_on_output
 bindsym $mod+Shift+tab workspace prev_on_output

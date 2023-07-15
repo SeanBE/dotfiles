@@ -25,12 +25,24 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-local pyright_root_path = vim.fn.getenv 'HOME' .. '/.local/share/nvim/lspinstall/python/node_modules'
-local pyright_binary = pyright_root_path .. '/.bin/pyright-langserver'
+require'lspconfig'.gopls.setup {
+    cmd = {"gopls", "serve"},
+    filetypes = {"go", "gomod"},
+    settings = {
+      gopls = {
+        analyses = {
+          unusedparams = true,
+        },
+        staticcheck = true,
+      },
+    }
+}
+
+-- pipx install pyright
+local pyright_binary = vim.fn.getenv 'HOME' .. '/.local/bin/pyright-langserver'
 require'lspconfig'.pyright.setup{
     on_attach = on_attach,
     capabilities=capabilities,
-    --cmd = { "/home/sean/.local/share/nvim/lspinstall/python/node_modules/.bin/pyright-langserver", "--stdio" },
   	cmd = { pyright_binary, '--stdio' },
 }
 --    handlers = {
@@ -53,9 +65,10 @@ require'lspconfig'.pyright.setup{
 --    }
 --}
 
+-- go install github.com/mattn/efm-langserver@latest
 require'lspconfig'.efm.setup{
     filetypes = { "python" },
-    cmd = { "/home/sean/.local/share/nvim/lspinstall/efm/efm-langserver" },
+    cmd = { vim.fn.getenv 'HOME' .. '/.go/bin/efm-langserver' },
     init_options = {documentFormatting = true},
     settings = {
         languages = {

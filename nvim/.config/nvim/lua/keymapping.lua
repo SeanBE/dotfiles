@@ -12,11 +12,15 @@ map('', '<left>', '<nop>', {noremap = true})
 map('', '<right>', '<nop>', {noremap = true})
 map('n', '<leader>c', ':nohl<CR>', {noremap = true, silent = true})
 
-map('n', '<Leader>ff', ":lua require'telescope.builtin'.find_files{}<CR>", { noremap = true, silent = true })
+map('n', '<leader>ni', ':VimwikiIndex<CR>', {noremap = true, silent = true})
+map('n', '<leader>nd', ':VimwikiMakeDiaryNote<CR>', {noremap = true, silent = true})
+
+map('n', '<Leader>ff', ":lua require'telescope.builtin'.find_files({follow=true})<CR>", { noremap = true, silent = true })
 map('n', '<Leader>pp', ":lua require'telescope.builtin'.builtin{}<CR>", { noremap = true, silent = true })
 map('n', '<Leader>g', ":lua require'telescope.builtin'.live_grep{}<CR>", { noremap = true, silent = true })
 map('n', '<Leader><Space>', ":lua require'telescope.builtin'.buffers{}<CR>", { noremap = true, silent = true })
-map('n', '<Leader>h', ":lua require'telescope.builtin'.help_tags{}<CR>", { noremap = true, silent = true })
+map('n', '<Leader>hh', ":lua require'telescope.builtin'.help_tags{}<CR>", { noremap = true, silent = true })
+map('n', '<Leader>cc', ":lua require'telescope.builtin'.commands{}<CR>", { noremap = true, silent = true })
 map('n', '<Leader>t', ":lua require'telescope.builtin'.tags{}<CR>", { noremap = true, silent = true })
 
 map('v', 'K', ":m '<-2<CR>gv=gv", {noremap = true})

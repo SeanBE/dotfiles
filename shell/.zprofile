@@ -18,9 +18,9 @@ export HISTFILE="$HOME/.zsh_history"
 export PAGER=less
 export LESS='-R'
 
-export GDK_BACKEND=wayland
-export CLUTTER_BACKEND=wayland
-export MOZ_ENABLE_WAYLAND=1
+#export GDK_BACKEND=wayland
+#export CLUTTER_BACKEND=wayland
+#export MOZ_ENABLE_WAYLAND=1
 
 # misc
 export GOPATH="$HOME/.go"

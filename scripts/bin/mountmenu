@@ -1,6 +1,7 @@
 #!/bin/sh
 SUDO='sudo'
 
+# TODO; doesn not work for usbs..
 # only listing SCSI partitions
 partitions=$(lsblk -nrpo "name,type,label,mountpoint" |
   awk -F'[ ]' '$1~"/dev/sd"&&$2=="part"{printf "%s %s %s\n",$1,$3,$4}') # use regex awk FS for single ws
@@ -11,7 +12,7 @@ options=$(echo "$partitions" |
 nlines=$(echo "$partitions" | wc -l)
 
 # https://github.com/davatorium/rofi/issues/559 need to set -i with -dmenu
-choice=$(echo "$options" | rofi -dmenu -p "Disk Util" -i -width 500 -lines "$nlines")
+choice=$(echo "$options" | $HOME/bin/multirofi.sh -dmenu -p "Disk Util" -i -width 500 -lines "$nlines")
 
 device=$(echo "$choice" | cut -d' ' -f2)
 name=$(echo "$choice" | cut -d' ' -f3)
